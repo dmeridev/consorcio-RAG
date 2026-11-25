@@ -42,6 +42,7 @@ CONSULTA (cada pregunta)
 | Extracción y limpieza | `extraer.py` | ✅ |
 | Troceado (por artículo y de tamaño fijo) | `trocear.py` | ✅ |
 | Embeddings locales | `embeddings.py` | ✅ |
+| Búsqueda por palabras (BM25) | `bm25.py` | ✅ |
 | Búsqueda híbrida (embeddings + BM25) | | ⏳ |
 | Evaluación (recall@k, fidelidad de la respuesta) | | ⏳ |
 | Generación de la respuesta con citas | | ⏳ |
@@ -81,6 +82,13 @@ harían de cebo en la búsqueda.
   3.000 caracteres, 17 fragmentos se pasaban. Se bajó a 2.000 (máximo 466 tokens) y un
   test lo vigila.
 
+**BM25 implementado a mano.** Los embeddings captan el significado pero casi ignoran los
+datos exactos («artículo 9»); BM25 hace lo contrario. Está implementado en unas 40 líneas
+(variante de Lucene, `k1 = 1,5`, `b = 0,75`) y un test lo compara con la librería `bm25s`
+sobre el corpus real. El tokenizador pasa a minúsculas y quita tildes y palabras vacías,
+pero conserva la ñ, los números y «no». La reducción a raíces (Snowball) es opcional y se
+decidirá con la evaluación.
+
 | Estrategia | Fragmentos | Mediana | Mezclan varios artículos |
 |---|---|---|---|
 | Por artículo | 215 | 751 caracteres | 0 |
@@ -110,6 +118,7 @@ src/rag_consorcio/
   numeros.py              «treinta y tres a)» → «33 a)»
   trocear.py              las dos estrategias de troceado
   embeddings.py           vectores con un modelo local intercambiable
+  bm25.py                 búsqueda por palabras y tokenizador
 tests/
 ```
 
