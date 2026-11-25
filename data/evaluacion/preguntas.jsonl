@@ -1,0 +1,63 @@
+{"id": "q01", "pregunta": "Un terremoto me ha agrietado la casa, ¿me indemniza el Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 1", "reglamento:texto:art. 2"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q02", "pregunta": "¿Qué fenómenos naturales cubre el Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 1"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q03", "pregunta": "¿Qué se entiende por inundación extraordinaria?", "articulos_validos": ["reglamento:texto:art. 2"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q04", "pregunta": "Ha llovido mucho y ha entrado agua por la azotea de mi casa, ¿lo cubre el Consorcio como inundación?", "articulos_validos": ["reglamento:texto:art. 2"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q05", "pregunta": "¿A partir de qué velocidad del viento interviene el Consorcio?", "articulos_validos": ["reglamento:texto:art. 2"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q06", "pregunta": "¿Qué es un tornado a efectos de la cobertura de riesgos extraordinarios?", "articulos_validos": ["reglamento:texto:art. 2"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q07", "pregunta": "¿Cubre el Consorcio los daños que cause un meteorito?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 1", "reglamento:texto:art. 2"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q08", "pregunta": "¿Cómo se define el terrorismo en el reglamento de riesgos extraordinarios?", "articulos_validos": ["reglamento:texto:art. 2"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q09", "pregunta": "Durante una huelga legal unos manifestantes rompen el escaparate de mi tienda, ¿paga el Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 6"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q10", "pregunta": "Un corrimiento de tierras ha dañado mi vivienda, ¿está cubierto por el Consorcio?", "articulos_validos": ["reglamento:texto:art. 6"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q11", "pregunta": "Una granizada me ha roto las placas solares, ¿lo cubre el Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 6"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q12", "pregunta": "¿Qué daños quedan fuera de la cobertura del Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 6"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q13", "pregunta": "Contraté la póliza hace tres días y ayer hubo una inundación, ¿me cubre el Consorcio?", "articulos_validos": ["reglamento:texto:art. 8", "reglamento:texto:art. 6"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q14", "pregunta": "¿Hay carencia si cambio de compañía?", "articulos_validos": ["reglamento:texto:art. 8"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q15", "pregunta": "¿Se aplica el plazo de carencia en los seguros de personas?", "articulos_validos": ["reglamento:texto:art. 8"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q16", "pregunta": "¿Qué dice el artículo 9 del Reglamento?", "articulos_validos": ["reglamento:texto:art. 9"], "tipo": "referencia", "origen": "sintetica"}
+{"id": "q17", "pregunta": "¿Me descuentan algo de la indemnización en un seguro de accidentes pagado por el Consorcio?", "articulos_validos": ["reglamento:texto:art. 9"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q18", "pregunta": "¿Quién fija la franquicia en los seguros contra daños en las cosas?", "articulos_validos": ["reglamento:texto:art. 9", "estatuto:texto:art. 8"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q19", "pregunta": "¿Paga el Consorcio la retirada de barro y escombros después de una riada?", "articulos_validos": ["reglamento:texto:art. 7"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q20", "pregunta": "¿Cuál es el límite de la indemnización por gastos complementarios?", "articulos_validos": ["reglamento:texto:art. 7"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q21", "pregunta": "¿Me paga el Consorcio los honorarios del perito que yo contrate?", "articulos_validos": ["reglamento:texto:art. 7"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q22", "pregunta": "Si mi casa está asegurada por menos de lo que vale, ¿cuánto me paga el Consorcio?", "articulos_validos": ["reglamento:texto:art. 5", "lcs:texto:art. 30"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q23", "pregunta": "¿Tiene que aceptar el Consorcio la tasación que hizo mi aseguradora?", "articulos_validos": ["reglamento:texto:art. 10"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q24", "pregunta": "¿Qué establece el artículo 10 del Reglamento del seguro de riesgos extraordinarios?", "articulos_validos": ["reglamento:texto:art. 10"], "tipo": "referencia", "origen": "sintetica"}
+{"id": "q25", "pregunta": "¿Qué requisitos debe cumplir una carta de garantía para tener cobertura de riesgos extraordinarios?", "articulos_validos": ["reglamento:texto:art. 11"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q26", "pregunta": "¿En qué pólizas es obligatorio pagar el recargo del Consorcio?", "articulos_validos": ["reglamento:texto:art. 4", "estatuto:texto:art. 7"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q27", "pregunta": "Mi aseguradora ha quebrado, ¿quién me paga un siniestro por inundación?", "articulos_validos": ["estatuto:texto:art. 8"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q28", "pregunta": "¿Quién aprueba la cláusula del Consorcio que aparece en las pólizas?", "articulos_validos": ["reglamento:texto:art. 12", "estatuto:texto:art. 8"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q29", "pregunta": "¿Quién aprueba las tarifas de recargos del seguro de riesgos extraordinarios?", "articulos_validos": ["reglamento:texto:art. 13", "estatuto:texto:art. 16"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q30", "pregunta": "¿Qué tipo de entidad es el Consorcio de Compensación de Seguros?", "articulos_validos": ["estatuto:texto:art. 1"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q31", "pregunta": "¿Quién ejerce la presidencia del Consorcio?", "articulos_validos": ["estatuto:texto:art. 4"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q32", "pregunta": "Vivo en España y en un atentado en París sufrí lesiones, ¿me indemniza el Consorcio?", "articulos_validos": ["estatuto:texto:art. 6", "reglamento:texto:art. 1"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q33", "pregunta": "¿Cubre el Consorcio lo que deja de ganar un negocio que tiene que cerrar tras una inundación?", "articulos_validos": ["reglamento:texto:art. 3", "reglamento:texto:art. 1", "estatuto:texto:art. 6"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q34", "pregunta": "¿Puede el Consorcio actuar como liquidador de entidades aseguradoras?", "articulos_validos": ["estatuto:texto:art. 14"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q35", "pregunta": "¿Qué papel tiene el Consorcio en el seguro obligatorio del coche?", "articulos_validos": ["estatuto:texto:art. 11"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q36", "pregunta": "¿De qué trata el artículo 20 del Estatuto Legal del Consorcio?", "articulos_validos": ["estatuto:texto:art. 20"], "tipo": "referencia", "origen": "sintetica"}
+{"id": "q37", "pregunta": "¿Puedo demandar al Consorcio sin presentar antes una reclamación administrativa?", "articulos_validos": ["estatuto:texto:art. 21"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q38", "pregunta": "¿Cubre el Consorcio los daños de un accidente en una central nuclear?", "articulos_validos": ["reglamento:texto:art. 6", "estatuto:texto:art. 6", "estatuto:texto:art. 9"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q39", "pregunta": "El siniestro ocurrió antes de pagar el primer recibo, ¿tengo cobertura?", "articulos_validos": ["reglamento:texto:art. 6", "lcs:texto:art. 15"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q40", "pregunta": "¿Cuántos días tengo para avisar a la aseguradora de un siniestro?", "articulos_validos": ["lcs:texto:art. 16"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q41", "pregunta": "¿En qué plazo debe pagar el asegurador el importe mínimo de la indemnización?", "articulos_validos": ["lcs:texto:art. 18"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q42", "pregunta": "Llevo dos meses sin pagar un recibo del seguro de hogar y se me inunda la casa, ¿me cubren?", "articulos_validos": ["lcs:texto:art. 15"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q43", "pregunta": "¿Cuánto tiempo tengo para reclamar a mi seguro de hogar antes de perder el derecho?", "articulos_validos": ["lcs:texto:art. 23"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q44", "pregunta": "¿Con cuánta antelación debe oponerse el tomador a la prórroga del contrato?", "articulos_validos": ["lcs:texto:art. 22"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q45", "pregunta": "¿Puedo ganar dinero con el seguro si me indemnizan por encima del valor de lo dañado?", "articulos_validos": ["lcs:texto:art. 26", "lcs:texto:art. 31"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q46", "pregunta": "¿Qué es la regla proporcional cuando la suma asegurada es inferior al valor del interés?", "articulos_validos": ["lcs:texto:art. 30", "reglamento:texto:art. 5"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q47", "pregunta": "Tengo la misma casa asegurada en dos compañías, ¿tengo que decírselo a cada una?", "articulos_validos": ["lcs:texto:art. 32"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q48", "pregunta": "¿Qué se considera incendio según la Ley de Contrato de Seguro?", "articulos_validos": ["lcs:texto:art. 45"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q49", "pregunta": "Me robaron porque me dejé la puerta de casa abierta, ¿me paga el seguro?", "articulos_validos": ["lcs:texto:art. 52"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q50", "pregunta": "Si otro conductor me causa daños, ¿puedo reclamar directamente a su aseguradora?", "articulos_validos": ["lcs:texto:art. 76"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q51", "pregunta": "¿Cómo define la ley el accidente en el seguro de accidentes?", "articulos_validos": ["lcs:texto:art. 100"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q52", "pregunta": "¿Qué pasa si no conté todo lo que me preguntaron al contratar el seguro?", "articulos_validos": ["lcs:texto:art. 10"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q53", "pregunta": "Contraté un seguro de hogar cuando la casa ya se había quemado, ¿es válido?", "articulos_validos": ["lcs:texto:art. 4"], "tipo": "caso", "origen": "sintetica"}
+{"id": "q54", "pregunta": "¿Tengo que hacer algo para que los daños no vayan a más después de un siniestro?", "articulos_validos": ["lcs:texto:art. 17"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q55", "pregunta": "¿Qué dice el artículo 43 de la Ley de Contrato de Seguro?", "articulos_validos": ["lcs:texto:art. 43"], "tipo": "referencia", "origen": "sintetica"}
+{"id": "q56", "pregunta": "¿Qué plazo tengo para enviar la relación de objetos dañados tras el siniestro?", "articulos_validos": ["lcs:texto:art. 38"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q57", "pregunta": "¿Qué establece el artículo 23 de la Ley 50/1980?", "articulos_validos": ["lcs:texto:art. 23"], "tipo": "referencia", "origen": "sintetica"}
+{"id": "q58", "pregunta": "¿Tienen que estar resaltadas en la póliza las cláusulas que me quitan derechos?", "articulos_validos": ["lcs:texto:art. 3"], "tipo": "parafrasis", "origen": "sintetica"}
+{"id": "q59", "pregunta": "¿Cuál es la duración máxima de un contrato de seguro?", "articulos_validos": ["lcs:texto:art. 22"], "tipo": "literal", "origen": "sintetica"}
+{"id": "q60", "pregunta": "¿Cuánto cuesta este año el recargo del Consorcio en un seguro de hogar?", "articulos_validos": [], "tipo": "sin_respuesta", "origen": "sintetica"}
+{"id": "q61", "pregunta": "¿Qué teléfono tiene el Consorcio para declarar un siniestro?", "articulos_validos": [], "tipo": "sin_respuesta", "origen": "sintetica"}
+{"id": "q62", "pregunta": "¿Cuánto tarda de media el Consorcio en pagar una indemnización?", "articulos_validos": [], "tipo": "sin_respuesta", "origen": "sintetica"}
+{"id": "q63", "pregunta": "¿Cómo se calcula la depreciación de un electrodoméstico al valorar los daños?", "articulos_validos": [], "tipo": "sin_respuesta", "origen": "sintetica"}

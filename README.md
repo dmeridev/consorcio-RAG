@@ -10,8 +10,9 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 > continuidad, salvo en la parte que sea aumento o nueva cobertura.
 > *Fuente: Reglamento del seguro de riesgos extraordinarios, art. 8.1.a.*
 
-**Estado:** en desarrollo. Ya funcionan la extracción, el troceado y los embeddings; faltan
-la búsqueda híbrida, la evaluación, la generación de la respuesta y la demo pública.
+**Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
+está entre los 5 primeros resultados en el **80 %** de las preguntas. Faltan la generación
+de la respuesta y la demo pública.
 
 ---
 
@@ -44,7 +45,8 @@ CONSULTA (cada pregunta)
 | Embeddings locales | `embeddings.py` | ✅ |
 | Búsqueda por palabras (BM25) | `bm25.py` | ✅ |
 | Búsqueda híbrida (RRF y suma ponderada) | `buscar.py` | ✅ |
-| Evaluación (recall@k, fidelidad de la respuesta) | | ⏳ |
+| Evaluación de la recuperación (recall@k, MRR) | `evaluar.py` | ✅ |
+| Evaluación de la respuesta (fidelidad) | | ⏳ |
 | Generación de la respuesta con citas | | ⏳ |
 | Demo pública (Hugging Face Spaces) | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
@@ -101,6 +103,33 @@ híbridas aciertan todas a la primera. La evaluación decidirá entre ellas.
 | Por artículo | 215 | 751 caracteres | 0 |
 | Tamaño fijo (1.000 / 200) | 219 | 996 caracteres | 129 |
 
+## Evaluación de la recuperación
+
+63 preguntas generadas con un LLM a partir de los artículos (59 con respuesta en el corpus),
+cada una con su lista de artículos válidos y un **tipo** para controlar el sesgo léxico:
+paráfrasis, literal, caso práctico y referencia a un artículo. Se prueban 14
+configuraciones: 2 troceados × 4 métodos × con o sin reducción a raíces.
+
+| Configuración | Recall@1 | Recall@5 | MRR |
+|---|---|---|---|
+| **Por artículo · RRF · raíces** | **58 %** | **80 %** | **0,65** |
+| Por artículo · embeddings | 47 % | 78 % | 0,61 |
+| Por artículo · RRF sin raíces | 53 % | 76 % | 0,63 |
+| Por artículo · ponderada · raíces | 54 % | 76 % | 0,63 |
+| Por artículo · BM25 · raíces | 42 % | 75 % | 0,56 |
+| Por artículo · BM25 | 46 % | 64 % | 0,54 |
+
+- **La búsqueda híbrida gana:** 80 % de recall@5 frente al 64 % de BM25 solo.
+- **Las raíces mejoran BM25** del 64 % al 75 %.
+- **Troceado por artículo vs. fijo:** empatan en el global (80 %), pero en las preguntas que
+  citan un artículo por número BM25 acierta el 100 % por artículo y el 20 % con fragmentos
+  fijos, gracias a la cabecera de contexto.
+- **Análisis de errores:** casi todos los fallos se deben a la distancia entre el lenguaje
+  coloquial y el jurídico («ha quebrado» frente a «declarada en concurso»).
+
+**Limitaciones:** las preguntas son sintéticas y no se han revisado a mano, y 59 preguntas
+son pocas (cada una vale 1,7 puntos). Solo las diferencias grandes son concluyentes.
+
 ## Uso
 
 Requiere Python 3.12 y [uv](https://docs.astral.sh/uv/).
@@ -109,6 +138,7 @@ Requiere Python 3.12 y [uv](https://docs.astral.sh/uv/).
 uv sync
 uv run python -m rag_consorcio.trocear       # PDF → fragmentos (data/fragmentos/)
 uv run python -m rag_consorcio.embeddings    # fragmentos → vectores (data/indices/)
+uv run python -m rag_consorcio.evaluar       # evaluación de la recuperación (~2,5 min)
 uv run pytest                                # todos los tests
 uv run pytest -m "not modelo"                # sin los que cargan el modelo de embeddings
 ```
@@ -127,6 +157,8 @@ src/rag_consorcio/
   embeddings.py           vectores con un modelo local intercambiable
   bm25.py                 búsqueda por palabras y tokenizador
   buscar.py               búsqueda híbrida (RRF y suma ponderada)
+  evaluar.py              métricas y evaluación de todas las configuraciones
+data/evaluacion/          preguntas de evaluación y resultados
 tests/
 ```
 
