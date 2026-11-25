@@ -1,0 +1,29 @@
+[project]
+name = "rag-consorcio"
+version = "0.1.0"
+description = "RAG sobre la normativa del Consorcio de Compensación de Seguros"
+authors = [
+    { name = "David Mérida", email = "meridev98@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.5",
+    "pymupdf>=2.1",
+    "sentence-transformers>=6.3.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.29,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[tool.pytest.ini_options]
+markers = ["modelo: necesita el modelo de embeddings descargado (más lento)"]
+
+[tool.ruff]
+line-length = 100
