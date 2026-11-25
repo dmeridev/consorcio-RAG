@@ -43,7 +43,7 @@ CONSULTA (cada pregunta)
 | Troceado (por artículo y de tamaño fijo) | `trocear.py` | ✅ |
 | Embeddings locales | `embeddings.py` | ✅ |
 | Búsqueda por palabras (BM25) | `bm25.py` | ✅ |
-| Búsqueda híbrida (embeddings + BM25) | | ⏳ |
+| Búsqueda híbrida (RRF y suma ponderada) | `buscar.py` | ✅ |
 | Evaluación (recall@k, fidelidad de la respuesta) | | ⏳ |
 | Generación de la respuesta con citas | | ⏳ |
 | Demo pública (Hugging Face Spaces) | | ⏳ |
@@ -89,6 +89,13 @@ sobre el corpus real. El tokenizador pasa a minúsculas y quita tildes y palabra
 pero conserva la ñ, los números y «no». La reducción a raíces (Snowball) es opcional y se
 decidirá con la evaluación.
 
+**Búsqueda híbrida con Reciprocal Rank Fusion.** Las puntuaciones de embeddings
+(0,80-0,90) y BM25 (0-15) no se pueden sumar tal cual. RRF solo mira la posición de cada
+fragmento en cada lista, `1 / (60 + posición)`, así que no hay nada que ajustar. Como
+alternativa para comparar hay una suma ponderada con normalización min-max. En una primera
+prueba con 5 preguntas, cada buscador por separado falla en alguna, mientras que las dos
+híbridas aciertan todas a la primera. La evaluación decidirá entre ellas.
+
 | Estrategia | Fragmentos | Mediana | Mezclan varios artículos |
 |---|---|---|---|
 | Por artículo | 215 | 751 caracteres | 0 |
@@ -119,6 +126,7 @@ src/rag_consorcio/
   trocear.py              las dos estrategias de troceado
   embeddings.py           vectores con un modelo local intercambiable
   bm25.py                 búsqueda por palabras y tokenizador
+  buscar.py               búsqueda híbrida (RRF y suma ponderada)
 tests/
 ```
 
