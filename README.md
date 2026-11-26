@@ -12,7 +12,7 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 
 **Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
 está entre los 5 primeros resultados en el **80 %** de las preguntas. La generación de la
-respuesta con citas ya funciona y su fidelidad está medida; falta la demo pública.
+respuesta con citas ya funciona y su fidelidad está medida. La demo web funciona en local; falta publicarla.
 
 ---
 
@@ -48,7 +48,8 @@ CONSULTA (cada pregunta)
 | Evaluación de la recuperación (recall@k, MRR) | `evaluar.py` | ✅ |
 | Evaluación de la respuesta (fidelidad, LLM como juez) | `fidelidad.py` | ✅ |
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
-| Demo pública (Hugging Face Spaces) | | ⏳ |
+| Demo web (Gradio) | `demo.py`, `app.py` | ✅ |
+| Publicación en Hugging Face Spaces | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
 ## Decisiones de diseño
@@ -196,6 +197,24 @@ versión de las instrucciones, así que repetir la evaluación no consume cuota.
 gratuito de Groq limita los tokens por minuto (una ejecución completa tarda unos 30
 minutos) y por día (200.000 tokens, en torno a una evaluación completa).
 
+## Demo web
+
+Una interfaz con Gradio (`app.py`): la pregunta, la respuesta con sus fuentes, los
+artículos encontrados (desplegables, con el citado marcado) y un aviso de que es una demo
+educativa que no sustituye el asesoramiento profesional.
+
+Está pensada para funcionar con una cuota gratuita limitada (unas 80-100 respuestas al día):
+
+- Modelo ligero (`gpt-oss-20b`), con una cuota separada de la de las evaluaciones.
+- Caché de respuestas y ejemplos precalculados, que no consumen cuota.
+- Si el LLM no responde o se agota la cuota, se muestran igualmente los artículos encontrados.
+- El modelo de embeddings se precarga al arrancar: una pregunta nueva tarda en torno a 1-2
+  segundos.
+
+```bash
+uv run python app.py       # http://localhost:7860
+```
+
 ## Uso
 
 Requiere Python 3.12 y [uv](https://docs.astral.sh/uv/).
@@ -228,7 +247,10 @@ src/rag_consorcio/
   evaluar.py              métricas y evaluación de todas las configuraciones
   generar.py              respuesta del LLM con citas verificadas
   fidelidad.py            evaluación de la respuesta con un LLM como juez
+  demo.py                 demo web con Gradio
+app.py                    punto de entrada de la demo
 data/evaluacion/          preguntas de evaluación y resultados
+data/demo/                respuestas precalculadas de los ejemplos
 tests/
 ```
 
