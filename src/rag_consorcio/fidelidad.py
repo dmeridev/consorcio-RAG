@@ -42,6 +42,7 @@ from rag_consorcio.generar import (
     GROQ,
     GROQ_JUEZ,
     INSTRUCCIONES,
+    VERSION_INSTRUCCIONES,
     Asistente,
     ClienteLLM,
     ClienteOpenAICompatible,
@@ -203,7 +204,13 @@ def evaluar(asistente: Asistente | None = None, juez: ClienteLLM | None = None) 
                     print(f"  {p.id} juzgada")
             caso["afirmaciones"] = juicios.get(clave_juicio, [])
         casos.append(caso)
-    return {"fecha": date.today().isoformat(), "modelo": modelo, **resumir(casos), "casos": casos}
+    return {
+        "fecha": date.today().isoformat(),
+        "modelo": modelo,
+        "instrucciones": VERSION_INSTRUCCIONES,
+        **resumir(casos),
+        "casos": casos,
+    }
 
 
 def resumir(casos: list[dict]) -> dict:
@@ -254,7 +261,10 @@ def imprimir(informe: dict) -> None:
     def fmt(x):
         return "—" if x is None else f"{x:.0%}"
 
-    print(f"\nModelo generador: {informe['modelo']} · {m['preguntas']} preguntas")
+    print(
+        f"\nModelo generador: {informe['modelo']} · instrucciones "
+        f"{informe.get('instrucciones', 'v1')} · {m['preguntas']} preguntas"
+    )
     print(f"  Fidelidad (afirmaciones respaldadas):     {fmt(m['fidelidad'])}")
     print(f"  Respuestas totalmente fieles:             {fmt(m['respuestas_totalmente_fieles'])}")
     print(f"  Tasa de respuesta (preguntas con resp.):  {fmt(m['tasa_de_respuesta'])}")
@@ -274,7 +284,7 @@ def imprimir(informe: dict) -> None:
 
 def main() -> None:
     informe = evaluar()
-    ruta = DIR_EVALUACION / "fidelidad.json"
+    ruta = DIR_EVALUACION / f"fidelidad_{VERSION_INSTRUCCIONES}.json"
     ruta.write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
     imprimir(informe)
     print(f"\nDetalle en {ruta}")

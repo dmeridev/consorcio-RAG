@@ -1,0 +1,1386 @@
+{
+ "fecha": "2026-11-26",
+ "modelo": "openai/gpt-oss-120b",
+ "instrucciones": "v2",
+ "metricas": {
+  "preguntas": 63,
+  "errores": 29,
+  "errores_juez": 0,
+  "fidelidad": 0.9493670886075949,
+  "respuestas_totalmente_fieles": 0.84,
+  "tasa_de_respuesta": 0.423728813559322,
+  "abstencion_correcta": 0.0,
+  "responde_sin_el_articulo": 0.08333333333333333
+ },
+ "calibracion": {
+  "q14": {
+   "esperado": "fiel",
+   "juez": "fiel"
+  }
+ },
+ "casos": [
+  {
+   "id": "q01",
+   "tipo": "caso",
+   "pregunta": "Un terremoto me ha agrietado la casa, ¿me indemniza el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Sí, el Consorcio de Compensación de Seguros indemniza los daños directos a inmuebles situados en España provocados por terremotos, ya que estos se consideran acontecimientos extraordinarios. La cobertura se aplica a los bienes inmuebles en territorio nacional según el Reglamento de riesgos extraordinarios, siempre que se respeten los límites y condiciones que establezca la normativa.",
+   "citas": [
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 6",
+    "Reglamento del seguro de riesgos extraordinarios, art. 1"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio de Compensación de Seguros indemniza los daños directos a inmuebles situados en España provocados por terremotos.",
+     "motivo": "El art. 6 del Estatuto y el art. 1 del Reglamento establecen que el objeto es indemnizar pérdidas derivadas de acontecimientos extraordinarios en España. El art. 1 del Reglamento define como pérdidas los daños directos en los bienes y define como acontecimientos extraordinarios los terremotos (apartado a). El art. 1.2.b del Reglamento define como riesgos situados en España los bienes inmuebles en territorio nacional.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Los terremotos se consideran acontecimientos extraordinarios.",
+     "motivo": "El art. 6 del Estatuto (apartado a) y el art. 1 del Reglamento (apartado a) listan explícitamente los terremotos entre los fenómenos de la naturaleza que se entienden por acontecimientos extraordinarios.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La cobertura se aplica a los bienes inmuebles en territorio nacional según el Reglamento de riesgos extraordinarios.",
+     "motivo": "El art. 1.2.b del Reglamento establece que, a efectos de la cobertura, se entienden por riesgos situados en España los bienes inmuebles situados en el territorio nacional.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La indemnización está sujeta a los límites y condiciones que establezca la normativa.",
+     "motivo": "El art. 6 del Estatuto y el art. 1 del Reglamento indican que las pérdidas se indemnizan en los términos y con los límites que reglamentariamente se determinen o que se establecen en el reglamento.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q02",
+   "tipo": "parafrasis",
+   "pregunta": "¿Qué fenómenos naturales cubre el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "El Consorcio cubre los fenómenos naturales siguientes: terremotos, maremotos, inundaciones extraordinarias, erupciones volcánicas, tempestad ciclónica atípica y caídas de cuerpos siderales o aerolitos. (según el art. 1 del Estatuto y el art. 2 del Reglamento)",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 6"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio cubre los fenómenos naturales siguientes: terremotos, maremotos, inundaciones extraordinarias, erupciones volcánicas, tempestad ciclónica atípica y caídas de cuerpos siderales o aerolitos.",
+     "motivo": "El artículo 6.1 del Estatuto Legal del Consorcio de Compensación de Seguros, apartado a), establece explícitamente que se entenderán por acontecimientos extraordinarios 'Los siguientes fenómenos de la naturaleza: terremotos y maremotos, las inundaciones extraordinarias, las erupciones volcánicas, la tempestad ciclónica atípica y las caídas de cuerpos siderales y aerolitos'. La respuesta coincide exactamente con esta lista.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q03",
+   "tipo": "literal",
+   "pregunta": "¿Qué se entiende por inundación extraordinaria?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 2 del Reglamento del seguro de riesgos extraordinarios, se entiende por inundación extraordinaria el anegamiento del terreno producido por la acción directa de aguas de lluvia, de deshielo o de lagos con salida natural, de ríos o rías o de cursos naturales de agua en superficie, cuando éstos se desbordan de sus cauces normales, así como los embates de mar en las costas. No se considerará inundación extraordinaria la provocada por aguas procedentes de presas, canales, alcantarillas, colectores u otros cauces subterráneos construidos por el hombre, ni la lluvia que caiga directamente sobre el bien asegurado o sea recogida por su cubierta, azotea, red de desagüe o patios.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Se entiende por inundación extraordinaria el anegamiento del terreno producido por la acción directa de aguas de lluvia, de deshielo o de lagos con salida natural, de ríos o rías o de cursos naturales de agua en superficie, cuando éstos se desbordan de sus cauces normales, así como los embates de mar en las costas.",
+     "motivo": "El texto del artículo 2.c) define textualmente la inundación extraordinaria con estas mismas palabras y condiciones.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "No se considerará inundación extraordinaria la provocada por aguas procedentes de presas, canales, alcantarillas, colectores u otros cauces subterráneos construidos por el hombre.",
+     "motivo": "El artículo 2.c) establece expresamente: 'No se entenderá por tal la producida por aguas procedentes de presas, canales, alcantarillas, colectores y otros cauces subterráneos, construidos por el hombre...'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "No se considerará inundación extraordinaria la lluvia que caiga directamente sobre el bien asegurado o sea recogida por su cubierta, azotea, red de desagüe o patios.",
+     "motivo": "El artículo 2.c) excluye 'la lluvia caída directamente sobre el riesgo asegurado, o la recogida por su cubierta o azotea, su red de desagüe o sus patios'. La respuesta usa 'bien asegurado' en lugar de 'riesgo asegurado', pero en el contexto legal de seguros ambos términos son equivalentes para referirse al objeto de la cobertura, por lo que la afirmación se deduce directamente del texto.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q04",
+   "tipo": "caso",
+   "pregunta": "Ha llovido mucho y ha entrado agua por la azotea de mi casa, ¿lo cubre el Consorcio como inundación?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "No, el Consorcio no cubre el agua que entra por la azotea a causa de la lluvia. Según la definición de inundación extraordinaria, excluye expresamente la lluvia que cae directamente sobre el riesgo asegurado o que se recoge por la cubierta o azotea ([F1]). Sólo están cubiertas las inundaciones provocadas por desbordamiento de ríos, lagos, mares u otras aguas naturales, no la lluvia que se filtra desde la propia vivienda.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio no cubre el agua que entra por la azotea a causa de la lluvia.",
+     "motivo": "El texto define la 'Inundación extraordinaria' y establece una exclusión expresa: 'ni la lluvia caída directamente sobre el riesgo asegurado, o la recogida por su cubierta o azotea'. Por tanto, el texto respalda que esta situación no se considera inundación extraordinaria a efectos de la cobertura.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La definición de inundación extraordinaria excluye expresamente la lluvia que cae directamente sobre el riesgo asegurado o que se recoge por la cubierta o azotea.",
+     "motivo": "El artículo 1.c) del texto proporcionado dice textualmente: 'No se entenderá por tal [...] ni la lluvia caída directamente sobre el riesgo asegurado, o la recogida por su cubierta o azotea'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Sólo están cubiertas las inundaciones provocadas por desbordamiento de ríos, lagos, mares u otras aguas naturales.",
+     "motivo": "El texto define la inundación extraordinaria como el anegamiento producido por 'aguas de lluvia, las procedentes de deshielo o las de los lagos que tengan salida natural, de los ríos o rías o de cursos naturales de agua en superficie, cuando éstos se desbordan de sus cauces normales, así como los embates de mar en las costas'. Aunque la respuesta simplifica diciendo 'sólo', el texto sí limita la definición a estas fuentes naturales y desbordes, excluyendo las fuentes artificiales y la lluvia",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q05",
+   "tipo": "parafrasis",
+   "pregunta": "¿A partir de qué velocidad del viento interviene el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el Reglamento del seguro de riesgos extraordinarios, el Consorcio interviene cuando las rachas de viento superan los 120 km/h (valor máximo sostenido durante tres segundos).",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio interviene cuando las rachas de viento superan los 120 km/h.",
+     "motivo": "El texto define 'Vientos extraordinarios' como aquellos que presentan rachas que superan los 120 km por hora (punto 4.º). Aunque el texto no usa explícitamente la frase 'el Consorcio interviene', en el contexto de un reglamento de seguro de riesgos extraordinarios, la definición de los fenómenos cubiertos implica la intervención del Consorcio para esos eventos. La afirmación se alinea con la definición normativa proporcionada.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La velocidad se refiere al valor máximo sostenido durante tres segundos.",
+     "motivo": "El texto define 'racha' como 'el mayor valor de la velocidad del viento, sostenida durante un intervalo de tres segundos' (punto 4.º). La respuesta describe correctamente esta definición técnica.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q06",
+   "tipo": "literal",
+   "pregunta": "¿Qué es un tornado a efectos de la cobertura de riesgos extraordinarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 2 del Reglamento del seguro de riesgos extraordinarios, un tornado se define como una borrasca extratropical de origen ciclónico que genera una tormenta giratoria, una columna nubosa de pequeño diámetro que se proyecta desde la base de un cumulonimbo hasta el suelo. Esta definición es la que se aplica a efectos de la cobertura de riesgos extraordinarios.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Un tornado se define como una borrasca extratropical de origen ciclónico que genera una tormenta giratoria, una columna nubosa de pequeño diámetro que se proyecta desde la base de un cumulonimbo hasta el suelo.",
+     "motivo": "El texto del artículo 2, apartado 3.º, define textualmente los tornados como 'borrascas extratropicales de origen ciclónico que generan tempestades giratorias... que toma la forma de una columna nubosa de pequeño diámetro proyectada de la base de un cumulonimbo hacia el suelo'. La afirmación resume fielmente esta definición.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Esta definición es la que se aplica a efectos de la cobertura de riesgos extraordinarios.",
+     "motivo": "El texto proporcionado es el 'Reglamento del seguro de riesgos extraordinarios, art. 2. Definiciones'. Al estar dentro de las definiciones de dicho reglamento, se deduce directamente que estas definiciones son las aplicables a los efectos de la cobertura regulada en dicho texto.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q07",
+   "tipo": "parafrasis",
+   "pregunta": "¿Cubre el Consorcio los daños que cause un meteorito?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": false,
+   "error": null,
+   "texto": "La normativa disponible no menciona expresamente los daños provocados por un meteorito, por lo que no se puede afirmar con certeza si el Consorcio los cubre o no.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q08",
+   "tipo": "literal",
+   "pregunta": "¿Cómo se define el terrorismo en el reglamento de riesgos extraordinarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 2 del Reglamento del seguro de riesgos extraordinarios, el terrorismo se define como \"toda acción violenta efectuada con la finalidad de desestabilizar el sistema político establecido, o causar temor e inseguridad en el medio social en que se produce\".[F2]",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 2"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El terrorismo se define como toda acción violenta efectuada con la finalidad de desestabilizar el sistema político establecido, o causar temor e inseguridad en el medio social en que se produce.",
+     "motivo": "El texto del artículo 2, apartado g), define textualmente el terrorismo con estas exactas palabras: 'toda acción violenta efectuada con la finalidad de desestabilizar el sistema político establecido, o causar temor e inseguridad en el medio social en que se produce'.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q09",
+   "tipo": "caso",
+   "pregunta": "Durante una huelga legal unos manifestantes rompen el escaparate de mi tienda, ¿paga el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 6 del Estatuto del Consorcio (F1) y el art. 6 del Reglamento de riesgos extraordinarios (F2), los daños causados por actuaciones durante huelgas legales están excluidos, salvo que esas actuaciones se califiquen como acontecimientos extraordinarios conforme al artículo 1. Por tanto, el Consorcio no indemnizará la rotura del escaparate, a menos que el Gobierno lo declare un hecho extraordinario (por ejemplo, catástrofe o calamidad nacional).",
+   "citas": [
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 6",
+    "Reglamento del seguro de riesgos extraordinarios, art. 6"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Los daños causados por actuaciones durante huelgas legales están excluidos de la indemnización del Consorcio, salvo que esas actuaciones se califiquen como acontecimientos extraordinarios conforme al artículo 1.",
+     "motivo": "Respaldada. El art. 6.3.h) del Estatuto (F1) y el art. 6.h) del Reglamento (F2) establecen expresamente la exclusión de los daños causados por actuaciones en el curso de huelgas legales, con la salvedad de que puedan ser calificadas como acontecimientos extraordinarios conforme al artículo 1.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio no indemnizará la rotura del escaparate, a menos que el Gobierno lo declare un hecho extraordinario (por ejemplo, catástrofe o calamidad nacional).",
+     "motivo": "No respaldada. Los textos indican que la excepción a la exclusión por huelga legal es que las actuaciones sean calificadas como 'acontecimientos extraordinarios' conforme al artículo 1. La mención a 'catástrofe o calamidad nacional' (art. 6.3.e) del Estatuto y art. 6.m) del Reglamento) es una causa de exclusión independiente y no la condición para que se indemnice un daño por huelga. Además, la respuesta sugiere que la declaración debe ser del Gobierno, mientras que el texto de la excepción只",
+     "respaldada": false
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q10",
+   "tipo": "caso",
+   "pregunta": "Un corrimiento de tierras ha dañado mi vivienda, ¿está cubierto por el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos del Reglamento del seguro de riesgos extraordinarios enumeran los fenómenos extraordinarios cubiertos (terremotos, maremotos, inundaciones extraordinarias, erupciones volcánicas, tempestades ciclónicas atípicas, caídas de cuerpos siderales, actos de terrorismo, etc.) y no mencionan los corrimientos de tierras. Por tanto, la normativa disponible no contiene una disposición expresa que incluya los corrimientos de tierras como riesgo indemnizable por el Consorcio. En ausencia de una referencia específica, no se puede afirmar que la vivienda esté cubierta por el Consorcio para ese daño.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q11",
+   "tipo": "caso",
+   "pregunta": "Una granizada me ha roto las placas solares, ¿lo cubre el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "La normativa disponible no indica de forma expresa que el Consorcio cubra daños a placas solares provocados por una granizada; los fragmentos citados enumeran coberturas genéricas (eventos de la naturaleza y ciertos daños a bienes) pero no mencionan específicamente este tipo de bien ni este riesgo. Por tanto, no se puede afirmar que la cobertura exista según lo que se muestra.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q12",
+   "tipo": "parafrasis",
+   "pregunta": "¿Qué daños quedan fuera de la cobertura del Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 6 del Reglamento de seguros de riesgos extraordinarios, quedan excluidos de la cobertura del Consorcio los daños que: a) no den lugar a indemnización según la Ley 50/1980; b) afecten a personas o bienes asegurados por contratos no incluidos en el art. 4; c) provengan de vicio, defecto propio o falta de mantenimiento de la cosa; d) se produzcan por conflictos armados; e) sean derivados de energía nuclear, salvo los daños directos a una instalación nuclear por un evento extraordinario; f) sean consecuencia de la mera acción del tiempo, oleaje o corrientes ordinarias en bienes sumergidos permanentemente; g) provengan de fenómenos naturales no señalados en el art. 1 (p.ej. elevación del nivel freático, deslizamientos, etc.), salvo que sean causados por lluvias que generen una inundación extraordinaria; h) resulten de actuaciones tumultuarias en reuniones o huelgas legales, salvo que se consideren acontecimientos extraordinarios; i) se deban a mala fe del asegurado; j) ocurran durante el plazo de carencia del art. 8; k) se produzcan antes del pago de la primera prima o cuando la cobertura esté suspendida o el seguro extinguido por falta de pago; l) sean daños indirectos o pérdidas distintas de la pérdida de beneficios, incluidos cortes o alteraciones del suministro exterior de energía, gases, etc.; y m) sean calificados por el Gobierno como \"catástrofe o calamidad nacional\".",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 6",
+    "Reglamento del seguro de riesgos extraordinarios, art. 6"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Quedan excluidos los daños que no den lugar a indemnización según la Ley 50/1980, de 8 de octubre, de Contrato de Seguro.",
+     "motivo": "Respaldada por el apartado a) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños ocasionados en personas o bienes asegurados por contrato de seguro no incluido entre los mencionados en el artículo 4.",
+     "motivo": "Respaldada por el apartado b) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños debidos a vicio o defecto propio de la cosa asegurada, o a su manifiesta falta de mantenimiento.",
+     "motivo": "Respaldada por el apartado c) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños producidos por conflictos armados, aunque no haya precedido la declaración oficial de guerra.",
+     "motivo": "Respaldada por el apartado d) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños derivados de la energía nuclear, sin perjuicio de lo establecido en la Ley 25/1964, salvo que sean daños directos ocasionados en una instalación nuclear asegurada como consecuencia de un acontecimiento extraordinario que afecte a la propia instalación.",
+     "motivo": "Respaldada por el apartado e) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños debidos a la mera acción del tiempo y, en el caso de bienes total o parcialmente sumergidos de forma permanente, los imputables a la mera acción del oleaje o corrientes ordinarios.",
+     "motivo": "Respaldada por el apartado f) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños producidos por fenómenos de la naturaleza distintos a los señalados en el artículo 1 (como elevación del nivel freático, movimiento de laderas, deslizamiento, etc.), salvo que fueran ocasionados manifiestamente por la acción del agua de lluvia que hubiera provocado una inundación extraordinaria y se produjeran simultáneamente a dicha inundación.",
+     "motivo": "Respaldada por el apartado g) del art. 6 (1/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños causados por actuaciones tumultuarias producidas en el curso de reuniones y manifestaciones conforme a la Ley Orgánica 9/1983, así como durante el transcurso de huelgas legales, salvo que dichas actuaciones pudieran ser calificadas como acontecimientos extraordinarios conforme al artículo 1.",
+     "motivo": "Respaldada por el apartado h) del art. 6 (2/2).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Quedan excluidos los daños causados por mala fe del asegurado.",
+     "motivo": "Respaldada por el apartado i) del art. 6 (2/2).",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q13",
+   "tipo": "caso",
+   "pregunta": "Contraté la póliza hace tres días y ayer hubo una inundación, ¿me cubre el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos disponibles no contienen una disposición que establezca si la cobertura del Consorcio de Seguros de riesgos extraordinarios se aplica a pólizas contratadas recientemente, ni si existe un plazo de carencia antes de que el Consorcio pueda indemnizar por un siniestro como una inundación. Por tanto, la normativa citada no responde de forma expresa si la póliza contratada hace tres días cubre el siniestro ocurrido ayer.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q14",
+   "tipo": "parafrasis",
+   "pregunta": "¿Hay carencia si cambio de compañía?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 8 del Reglamento del seguro de riesgos extraordinarios, el período de carencia no se aplica cuando se produce el reemplazo o sustitución de la póliza en la misma u otra entidad sin interrupción de la cobertura, salvo en la parte que sea aumento o nueva cobertura. Por tanto, al cambiar de compañía manteniendo la continuidad, no hay carencia. Si la nueva póliza incluye coberturas nuevas o aumentos, esas partes sí podrían estar sujetas al carencia.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 8"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El período de carencia no se aplica cuando se produce el reemplazo o sustitución de la póliza en la misma u otra entidad sin interrupción de la cobertura.",
+     "motivo": "El artículo 8.1.a) establece expresamente que el período de carencia no regirá en los casos de reemplazo o sustitución de la póliza, en la misma u otra entidad, sin solución de continuidad.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La excepción a la no aplicación de la carencia en caso de cambio de compañía se aplica a la parte que fuera objeto de aumento o nueva cobertura.",
+     "motivo": "El artículo 8.1.a) incluye la salvedad 'salvo en la parte que fuera objeto de aumento o nueva cobertura', lo que implica que esa parte sí queda sujeta a la carencia.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Al cambiar de compañía manteniendo la continuidad, no hay carencia.",
+     "motivo": "Esta conclusión se deduce directamente de la combinación de la regla general de carencia (art. 8.1) y la excepción específica para reemplazos sin solución de continuidad (art. 8.1.a).",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Si la nueva póliza incluye coberturas nuevas o aumentos, esas partes sí podrían estar sujetas al carencia.",
+     "motivo": "El artículo 8.1.a) excluye de la exención de carencia a la parte que sea objeto de aumento o nueva cobertura, por lo que esa parte sí está sujeta al plazo de carencia general.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q15",
+   "tipo": "literal",
+   "pregunta": "¿Se aplica el plazo de carencia en los seguros de personas?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el Reglamento del seguro de riesgos extraordinarios, el período de carencia no se aplica a los seguros de personas ([F1]). Por tanto, en estos seguros no existe esa limitación temporal para la cobertura.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 8"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El período de carencia no se aplica a los seguros de personas",
+     "motivo": "El artículo 8, apartado 3, establece textualmente: 'En los seguros de personas no será de aplicación el anterior período de carencia.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "En los seguros de personas no existe esa limitación temporal para la cobertura",
+     "motivo": "Esta afirmación es una consecuencia lógica directa de la no aplicación del período de carencia (art. 8.3). Al no aplicarse la carencia, no existe dicha limitación temporal específica de siete días. El art. 8.4 complementa indicando que en supuestos donde no se aplica la carencia, los efectos comienzan en la fecha de emisión o efecto, confirmando la ausencia de la limitación de carencia.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q16",
+   "tipo": "referencia",
+   "pregunta": "¿Qué dice el artículo 9 del Reglamento?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "El artículo 9 del Reglamento del seguro de riesgos extraordinarios establece que, en los seguros contra daños a las cosas y de responsabilidad civil en vehículos terrestres, se aplicará la franquicia que, en su caso, fije el Ministro de Economía y Competitividad a propuesta del Consorcio de Compensación de Seguros; en los seguros de personas no se realizará deducción por franquicia.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 9"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "En los seguros contra daños a las cosas y de responsabilidad civil en vehículos terrestres, se aplicará la franquicia que, en su caso, fije el Ministro de Economía y Competitividad a propuesta del Consorcio de Compensación de Seguros.",
+     "motivo": "El artículo 9.1 de los textos proporcionados establece textualmente: 'En los seguros contra daños en las cosas y responsabilidad civil en vehículos terrestres, se aplicará la franquicia que, en su caso, fije el Ministro de Economía y Competitividad a propuesta del Consorcio de Compensación de Seguros.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "En los seguros de personas no se realizará deducción por franquicia.",
+     "motivo": "El artículo 9.2 de los textos proporcionados establece textualmente: 'En los seguros de personas no se efectuará deducción por franquicia.' La afirmación usa 'no se realizará' en lugar de 'no se efectuará', pero el significado es idéntico y está directamente respaldado por el texto.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q17",
+   "tipo": "parafrasis",
+   "pregunta": "¿Me descuentan algo de la indemnización en un seguro de accidentes pagado por el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos disponibles no contienen una disposición que indique que el Consorcio de Compensación de Seguros deba descontar alguna cantidad de la indemnización en un seguro de accidentes. No se encuentra normativa que regule deducciones de la indemnización en este caso.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q18",
+   "tipo": "literal",
+   "pregunta": "¿Quién fija la franquicia en los seguros contra daños en las cosas?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 9 del Reglamento del seguro de riesgos extraordinarios, la franquicia en los seguros contra daños en las cosas la fija el Ministerio de Economía y Competitividad, a propuesta del Consorcio de Compensación de Seguros. Lo mismo indica el art. 8 del Estatuto del Consorcio, que permite al Ministerio fijar la franquicia a propuesta del Consorcio.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 9",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 8"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "La franquicia en los seguros contra daños en las cosas la fija el Ministerio de Economía y Competitividad, a propuesta del Consorcio de Compensación de Seguros.",
+     "motivo": "El artículo 9.1 del Reglamento establece explícitamente que se aplicará la franquicia que fije el Ministro de Economía y Competitividad a propuesta del Consorcio de Compensación de Seguros para los seguros contra daños en las cosas.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El art. 8 del Estatuto del Consorcio permite al Ministerio fijar la franquicia a propuesta del Consorcio.",
+     "motivo": "El artículo 8.5 del Estatuto Legal del Consorcio indica que el Ministerio de Economía y Competitividad, a propuesta del Consorcio, podrá fijar una franquicia a cargo del asegurado para los supuestos en que el Consorcio tenga obligación de indemnizar en seguros contra daños y responsabilidad civil en vehículos terrestres automóviles.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q19",
+   "tipo": "parafrasis",
+   "pregunta": "¿Paga el Consorcio la retirada de barro y escombros después de una riada?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos consultados no contienen una disposición expresa que indique que el Consorcio de Compensación de Seguros deba pagar la retirada de barro y escombros después de una riada. No se menciona esa cobertura ni se establece una regla al respecto en la normativa citada.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q20",
+   "tipo": "literal",
+   "pregunta": "¿Cuál es el límite de la indemnización por gastos complementarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 7 del Reglamento del seguro de riesgos extraordinarios, la indemnización conjunta por gastos complementarios está limitada al 4 % de la suma asegurada (aplicándose después lo previsto para el infraseguro).",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 7"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "La indemnización conjunta por gastos complementarios está limitada al 4 % de la suma asegurada.",
+     "motivo": "El texto del art. 7 establece textualmente: 'La indemnización conjunta por gastos complementarios quedará limitada al 4 por ciento de la suma asegurada'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "A la indemnización limitada al 4 % le será de aplicación lo establecido en el artículo 5 para los supuestos de infraseguro.",
+     "motivo": "El texto del art. 7 indica: 'y a la así calculada le será de aplicación lo establecido en el artículo 5 para los supuestos de infraseguro'.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q21",
+   "tipo": "caso",
+   "pregunta": "¿Me paga el Consorcio los honorarios del perito que yo contrate?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 39 de la Ley 50/1980, cada parte paga los honorarios de su perito y los del perito tercero se reparten a partes iguales entre asegurado y asegurador; si la peritación fue necesaria por una valoración desproporcionada, quien la provocó asume el gasto. Por tanto, el Consorcio, cuando actúa como asegurador, no asume directamente esos honorarios, sino que corresponde al asegurado y al asegurador (o al que haya causado la peritación). No existe disposición que indique que el Consorcio pague los honorarios del perito que contrates.",
+   "citas": [
+    "Ley 50/1980 de Contrato de Seguro, art. 39"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Cada parte paga los honorarios de su perito.",
+     "motivo": "El texto del art. 39 establece textualmente: 'Cada parte satisfará los honorarios de su Perito.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Los honorarios del perito tercero se reparten a partes iguales entre asegurado y asegurador.",
+     "motivo": "El texto indica: 'Los del Perito tercero... serán de cuenta y cargo por mitad del asegurado y del asegurador.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Si la peritación fue necesaria por una valoración desproporcionada, quien la provocó asume el gasto.",
+     "motivo": "El texto señala: 'si cualquiera de las partes hubiera hecho necesaria la peritación por haber mantenido una valoración del daño manifiestamente desproporcionada, será ella la única responsable de dichos gastos.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio, cuando actúa como asegurador, no asume directamente esos honorarios, sino que corresponde al asegurado y al asegurador (o al que haya causado la peritación).",
+     "motivo": "El texto regula la responsabilidad de 'cada parte' y del 'asegurador' de forma genérica. No menciona al 'Consorcio' ni hace distinciones específicas sobre su actuación como asegurador, por lo que esta conclusión específica sobre el Consorcio no se deduce directamente de los textos proporcionados.",
+     "respaldada": false
+    },
+    {
+     "afirmacion": "No existe disposición que indique que el Consorcio pague los honorarios del perito que contrates.",
+     "motivo": "El texto proporcionado (art. 39) no contiene ninguna mención al Consorcio ni a disposiciones específicas sobre el pago de honorarios por parte de este. Por tanto, es correcto afirmar que en este texto no existe dicha disposición.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q22",
+   "tipo": "parafrasis",
+   "pregunta": "Si mi casa está asegurada por menos de lo que vale, ¿cuánto me paga el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos consultados no contienen una disposición que indique cuánto paga el Consorcio cuando una vivienda está asegurada por un importe inferior al valor real del bien; sólo se refieren a recargos, mora, contratación, tramitación de siniestros y modelos de pólizas, sin establecer una regla de indemnización por subvaloración.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q23",
+   "tipo": "parafrasis",
+   "pregunta": "¿Tiene que aceptar el Consorcio la tasación que hizo mi aseguradora?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "La normativa disponible no contiene una disposición que obligue al Consorcio a aceptar la tasación realizada por la aseguradora. Los fragmentos citados tratan sobre funciones de liquidación, fines, primas y cobertura de responsabilidad civil, pero no regulan la aceptación de peritajes.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q24",
+   "tipo": "referencia",
+   "pregunta": "¿Qué establece el artículo 10 del Reglamento del seguro de riesgos extraordinarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 10 del Reglamento del seguro de riesgos extraordinarios, la valoración de las pérdidas derivadas de los acontecimientos extraordinarios la realizará el Consorcio de Compensación de Seguros, y el Consorcio no quedará vinculado por las valoraciones que, en su caso, haya hecho la entidad aseguradora que cubra los riesgos ordinarios.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 10"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "La valoración de las pérdidas derivadas de los acontecimientos extraordinarios la realizará el Consorcio de Compensación de Seguros.",
+     "motivo": "El texto indica textualmente: 'La valoración de las pérdidas derivadas de los acontecimientos extraordinarios se realizará por el Consorcio de Compensación de Seguros'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio no quedará vinculado por las valoraciones que, en su caso, haya hecho la entidad aseguradora que cubra los riesgos ordinarios.",
+     "motivo": "El texto establece: 'sin que éste quede vinculado por las valoraciones que, en su caso, hubiese realizado la entidad aseguradora que cubriese los riesgos ordinarios'. La afirmación refleja fielmente esta disposición.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q25",
+   "tipo": "literal",
+   "pregunta": "¿Qué requisitos debe cumplir una carta de garantía para tener cobertura de riesgos extraordinarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 11 del Reglamento del seguro de riesgos extraordinarios, una carta de garantía solo está cubierta si: (a) en ella se precisan los bienes a asegurar, el capital asegurado y la duración, que no puede ser superior a tres meses; (b) el asegurado ha pagado efectivamente una cantidad a cuenta de la prima que se aproxime al importe de ésta; (c) se ha enviado al Consorcio una copia de la carta antes del siniestro y dentro de los 15 días siguientes a su firma, junto con la justificación del pago.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 11"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "En la carta de garantía se deben precisar los bienes que han de asegurarse, el capital asegurado y la duración.",
+     "motivo": "El texto del art. 11, apartado a), establece textualmente: 'Que en ella se precisen los bienes que han de asegurarse, el capital asegurado y la duración...'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La duración de la carta de garantía no puede ser superior a tres meses.",
+     "motivo": "El texto del art. 11, apartado a), indica que la duración 'en ningún caso podrá ser superior a tres meses'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El asegurado debe haber pagado efectivamente una cantidad a cuenta de la prima que se aproxime al importe de ésta.",
+     "motivo": "El texto del art. 11, apartado b), exige que 'el asegurado haya pagado efectivamente una cantidad a cuenta de la prima que se aproxime al importe de ésta'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Debe enviarse al Consorcio de Compensación de Seguros una copia de la carta con anterioridad al siniestro.",
+     "motivo": "El texto del art. 11, apartado c), exige que 'se haya enviado al Consorcio de Compensación de Seguros copia de la citada carta con anterioridad al siniestro'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La copia de la carta debe enviarse dentro de los 15 días siguientes a su firma.",
+     "motivo": "El texto del art. 11, apartado c), especifica que el envío debe ser 'dentro de los 15 días siguientes a su firma'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Debe enviarse junto con la justificación del pago a cuenta de la prima.",
+     "motivo": "El texto del art. 11, apartado c), añade 'así como justificación del pago a que se refiere el párrafo anterior' (refiriéndose al pago a cuenta de la prima del apartado b).",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q26",
+   "tipo": "parafrasis",
+   "pregunta": "¿En qué pólizas es obligatorio pagar el recargo del Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 4 del Reglamento de seguros extraordinarios y el art. 7 del Estatuto del Consorcio, el recargo es obligatorio en las pólizas de seguros de cosas que cubran vehículos terrestres y ferroviarios, incendios y fenómenos naturales, otros daños a los bienes (robo, rotura de cristales, daños a maquinaria, equipos electrónicos, etc.), responsabilidad civil de vehículos a motor y pérdidas pecuniarias diversas, así como en sus modalidades combinadas o complementarias. También es obligatorio en los seguros de personas que garanticen, de forma exclusiva o principal, el riesgo de fallecimiento, tanto en el ramo de vida como en el de accidentes, incluyendo las que añadan indemnizaciones por invalidez o que estén vinculadas a planes de pensiones. Estas son las pólizas en que la normativa indica expresamente la obligación de pagar el recargo a favor del Consorcio.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 4",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 7",
+    "Reglamento del seguro de riesgos extraordinarios, art. 4"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El recargo es obligatorio en las pólizas de seguros de cosas que cubran vehículos terrestres y ferroviarios, incendios y fenómenos naturales, otros daños a los bienes (robo, rotura de cristales, daños a maquinaria, equipos electrónicos, etc.), responsabilidad civil de vehículos a motor y pérdidas pecuniarias diversas, así como en sus modalidades combinadas o complementarias.",
+     "motivo": "Respaldada. El art. 4.1.a) del Reglamento y el art. 7.b) del Estatuto listan explícitamente estos ramos (vehículos terrestres/ferroviarios, incendio/eventos de la naturaleza, otros daños, RC en vehículos terrestres automóviles, pérdidas pecuniarias diversas) y mencionan las modalidades combinadas o complementarias.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "También es obligatorio en los seguros de personas que garanticen, de forma exclusiva o principal, el riesgo de fallecimiento, tanto en el ramo de vida como en el de accidentes, incluyendo las que añadan indemnizaciones por invalidez o que estén vinculadas a planes de pensiones.",
+     "motivo": "Respaldada. El art. 4.1.b) del Reglamento y el art. 7.a) del Estatuto establecen la obligatoriedad para el ramo de vida (garantizando exclusiva o principalmente fallecimiento) y el ramo de accidentes (garantizando fallecimiento o indemnizaciones por invalidez/incapacidad). El art. 4.1.b) del Reglamento añade específicamente la inclusión de pólizas vinculadas a planes de pensiones.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q27",
+   "tipo": "caso",
+   "pregunta": "Mi aseguradora ha quebrado, ¿quién me paga un siniestro por inundación?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": false,
+   "error": null,
+   "texto": "Los fragmentos proporcionados no contienen ninguna disposición que indique quién asume el pago de un siniestro por inundación cuando la aseguradora ha quebrado. Sólo se refieren a obligaciones de pago del asegurador, plazos y consecuencias de mora, pero no a la sustitución del asegurador en caso de insolvencia. Por lo tanto, la normativa disponible no responde de forma expresa a su pregunta.",
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q28",
+   "tipo": "parafrasis",
+   "pregunta": "¿Quién aprueba la cláusula del Consorcio que aparece en las pólizas?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "La cláusula de cobertura del Consorcio que figura en las pólizas debe ser aprobada por la Dirección General de Seguros y Fondos de Pensiones, a propuesta del propio Consorcio de Compensación de Seguros.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 12",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 8"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "La cláusula de cobertura del Consorcio que figura en las pólizas debe ser aprobada por la Dirección General de Seguros y Fondos de Pensiones.",
+     "motivo": "El artículo 12 del Reglamento y el artículo 8.3 del Estatuto Legal establecen expresamente que dicha cláusula será aprobada por la Dirección General de Seguros y Fondos de Pensiones.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La aprobación se realiza a propuesta del propio Consorcio de Compensación de Seguros.",
+     "motivo": "El artículo 12 del Reglamento indica que la aprobación es 'a propuesta del Consorcio de Compensación de Seguros' y el artículo 8.3 del Estatuto Legal confirma que es 'a propuesta del Consorcio'.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q29",
+   "tipo": "literal",
+   "pregunta": "¿Quién aprueba las tarifas de recargos del seguro de riesgos extraordinarios?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 13 del Reglamento del seguro de riesgos extraordinarios, las tarifas de recargos del seguro de riesgos extraordinarios deben ser aprobadas por la Dirección General de Seguros y Fondos de Pensiones, a propuesta del Consorcio de Compensación de Seguros.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 13"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Las tarifas de recargos del seguro de riesgos extraordinarios deben ser aprobadas por la Dirección General de Seguros y Fondos de Pensiones.",
+     "motivo": "El artículo 13, apartado 1, establece textualmente que dichas tarifas \"serán aprobadas por la Dirección General de Seguros y Fondos de Pensiones\".",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La aprobación se realiza a propuesta del Consorcio de Compensación de Seguros.",
+     "motivo": "El artículo 13, apartado 1, indica que la aprobación es \"a propuesta del Consorcio de Compensación de Seguros\".",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q30",
+   "tipo": "parafrasis",
+   "pregunta": "¿Qué tipo de entidad es el Consorcio de Compensación de Seguros?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 1 del Estatuto Legal del Consorcio de Compensación de Seguros, el Consorcio se constituye como una entidad pública empresarial, con personalidad jurídica propia, plena capacidad de obrar y patrimonio distinto al del Estado. Está adscrito al Ministerio de Economía y Hacienda.",
+   "citas": [
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 1"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio se constituye como una entidad pública empresarial.",
+     "motivo": "El artículo 1.1 de los textos indica textualmente: 'El Consorcio... se constituye como una entidad pública empresarial'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio tiene personalidad jurídica propia.",
+     "motivo": "El artículo 1.1 de los textos menciona que la entidad tiene 'personalidad jurídica propia'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio tiene plena capacidad de obrar.",
+     "motivo": "El artículo 1.1 de los textos menciona que la entidad tiene 'plena capacidad de obrar para el cumplimiento de sus fines'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio tiene patrimonio distinto al del Estado.",
+     "motivo": "El artículo 1.1 de los textos indica que la entidad está 'dotada de patrimonio distinto al del Estado'.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El Consorcio está adscrito al Ministerio de Economía y Hacienda.",
+     "motivo": "El artículo 1.2 de los textos establece: 'El Consorcio está adscrito al Ministerio de Economía y Hacienda'.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q31",
+   "tipo": "literal",
+   "pregunta": "¿Quién ejerce la presidencia del Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Según el art. 4 del Estatuto Legal del Consorcio de Compensación de Seguros, la presidencia del Consorcio la ejerce el Director General de Seguros y Fondos de Pensiones. Esto implica que la máxima autoridad ejecutiva del Consorcio corresponde a esa figura del Ministerio de Economía y Hacienda. No se menciona ninguna otra persona o entidad que desempeñe esa función.",
+   "citas": [
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 4"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "La presidencia del Consorcio la ejerce el Director General de Seguros y Fondos de Pensiones.",
+     "motivo": "El artículo 4, apartado 2, establece textualmente: 'La presidencia del Consorcio será desempeñada por el Director General de Seguros y Fondos de Pensiones.'",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "La máxima autoridad ejecutiva del Consorcio corresponde a esa figura del Ministerio de Economía y Hacienda.",
+     "motivo": "Los textos proporcionados no definen la 'máxima autoridad ejecutiva' ni atribuyen explícitamente al Director General la pertenencia al 'Ministerio de Economía y Hacienda'. Aunque el apartado 3 menciona al Ministro de Economía y Hacienda para el nombramiento de vocales, no se establece la relación orgánica del Director General con dicho Ministerio ni su estatus como máxima autoridad ejecutiva en el texto.",
+     "respaldada": false
+    },
+    {
+     "afirmacion": "No se menciona ninguna otra persona o entidad que desempeñe esa función.",
+     "motivo": "El artículo 4, apartado 2, asigna la presidencia exclusivamente al Director General de Seguros y Fondos de Pensiones, sin mencionar a otros titulares para esa función específica.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q32",
+   "tipo": "caso",
+   "pregunta": "Vivo en España y en un atentado en París sufrí lesiones, ¿me indemniza el Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Sí, el Consorcio le indemniza porque, según el art. 1 del Reglamento de seguros de riesgos extraordinarios y el art. 6 del Estatuto Legal, los daños personales derivados de acontecimientos extraordinarios ocurridos en el extranjero están cubiertos cuando el asegurado tiene residencia habitual en España. Un atentado se incluye en la categoría de terrorismo, que está expresamente considerada como acontecimiento extraordinario. Por tanto, sus lesiones sufridas en París serían indemnizables.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 1",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 6"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "Los daños personales derivados de acontecimientos extraordinarios ocurridos en el extranjero están cubiertos cuando el asegurado tiene residencia habitual en España.",
+     "motivo": "Respaldada. El art. 1.3 del Reglamento y el art. 6.1 del Estatuto Legal establecen textualmente que serán indemnizables los daños personales derivados de acontecimientos extraordinarios acaecidos en el extranjero cuando el asegurado tenga su residencia habitual en España.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Un atentado se incluye en la categoría de terrorismo, que está expresamente considerada como acontecimiento extraordinario.",
+     "motivo": "Respaldada. El art. 6.1.b) del Estatuto Legal define como acontecimientos extraordinarios los ocasionados violentamente como consecuencia de terrorismo. Aunque el texto no define explícitamente la palabra 'atentado', la asociación lógica de un atentado con el terrorismo es la base de la afirmación y el texto sí respalda que el terrorismo es un acontecimiento extraordinario.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Sus lesiones sufridas en París serían indemnizables.",
+     "motivo": "Respaldada. Se deduce directamente de la combinación de las dos afirmaciones anteriores: el asegurado reside en España (dato de la pregunta), el evento es terrorismo (acontecimiento extraordinario según el texto) y ocurrió en el extranjero (París). El texto establece la cobertura para este supuesto exacto.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q33",
+   "tipo": "parafrasis",
+   "pregunta": "¿Cubre el Consorcio lo que deja de ganar un negocio que tiene que cerrar tras una inundación?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Sí, el Consorcio cubre la pérdida de beneficios cuando un acontecimiento extraordinario, como una inundación extraordinaria, obliga al negocio a paralizar o reducir su actividad, siempre que el siniestro no esté excluido. El artículo 4 del Reglamento establece que la pérdida de beneficios está cubierta por la alteración de los resultados normales del asegurado por un evento extraordinario. El artículo 6 excluye los daños por fenómenos naturales que no sean los señalados, pero permite la cobertura de inundaciones extraordinarias. Por tanto, si la inundación es considerada extraordinaria y no está excluida, el Consorcio indemnizará lo que el negocio deja de ganar.",
+   "citas": [
+    "Reglamento del seguro de riesgos extraordinarios, art. 3",
+    "Reglamento del seguro de riesgos extraordinarios, art. 6"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio cubre la pérdida de beneficios cuando un acontecimiento extraordinario obliga al negocio a paralizar o reducir su actividad.",
+     "motivo": "El texto del art. 3.1 define la pérdida de beneficios como la alteración de los resultados normales derivada de la paralización, suspensión o reducción de los procesos productivos a consecuencia de un acontecimiento extraordinario.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El artículo 4 del Reglamento establece que la pérdida de beneficios está cubierta por la alteración de los resultados normales del asegurado por un evento extraordinario.",
+     "motivo": "Los textos proporcionados no incluyen el contenido del artículo 4. El artículo 3 menciona el artículo 4 en el contexto de los seguros incluidos, pero no define la cobertura de la pérdida de beneficios en el artículo 4. La definición se encuentra en el artículo 3.",
+     "respaldada": false
+    },
+    {
+     "afirmacion": "El artículo 6 excluye los daños por fenómenos naturales que no sean los señalados, pero permite la cobertura de inundaciones extraordinarias.",
+     "motivo": "El artículo 6.g) excluye los fenómenos de la naturaleza distintos a los señalados en el artículo 1. Aunque el texto no define explícitamente qué son los 'señalados en el artículo 1', la exclusión es relativa a los no señalados, lo que implica que los señalados (que incluyen la inundación extraordinaria según el contexto de la pregunta y la referencia implícita en la exclusión de fenómenos *distintos*) no están excluidos por este apartado. Sin embargo, la afirmación de que 'permite la cobertu",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Si la inundación es considerada extraordinaria y no está excluida, el Consorcio indemnizará lo que el negocio deja de ganar.",
+     "motivo": "Se deduce de la combinación del art. 3.1 (que define la cobertura de la pérdida de beneficios ante acontecimientos extraordinarios) y el art. 6 (que lista las exclusiones). Si el evento es extraordinario (no excluido por el art. 6.g) porque es de los señalados en el art. 1, y cumple la definición de pérdida de beneficios, queda cubierto.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q34",
+   "tipo": "literal",
+   "pregunta": "¿Puede el Consorcio actuar como liquidador de entidades aseguradoras?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": true,
+   "error": null,
+   "texto": "Sí, el Consorcio puede actuar como liquidador de entidades aseguradoras cuando la autoridad competente le encomienda la liquidación. Según el art. 14 del Estatuto Legal, asumirá esa condición en los supuestos de disolución administrativa, falta de nombramiento de liquidadores, incumplimiento de normas o a petición de la propia entidad, entre otros. Además, el art. 3 indica que le corresponde llevar a cabo la liquidación que le sea encomendada.",
+   "citas": [
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 14",
+    "Estatuto Legal del Consorcio de Compensación de Seguros, art. 3"
+   ],
+   "avisos": [],
+   "afirmaciones": [
+    {
+     "afirmacion": "El Consorcio puede actuar como liquidador de entidades aseguradoras cuando la autoridad competente le encomienda la liquidación.",
+     "motivo": "El art. 14.1 establece que el Consorcio asumirá la condición de liquidador cuando le encomiende su liquidación el Ministro de Economía y Competitividad o el órgano competente de la respectiva Comunidad Autónoma.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Según el art. 14, el Consorcio asumirá la condición de liquidador en supuestos de disolución administrativa.",
+     "motivo": "El art. 14.1.a) indica que podrá serle encomendada la liquidación simultáneamente a la disolución de la entidad aseguradora si se hubiera procedido a ella administrativamente.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Según el art. 14, el Consorcio asumirá la condición de liquidador en caso de falta de nombramiento de liquidadores.",
+     "motivo": "El art. 14.1.b) señala que podrá serle encomendada la liquidación si, disuelta una entidad, esta no hubiese procedido al nombramiento de los liquidadores antes de los quince días siguientes a la disolución.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Según el art. 14, el Consorcio asumirá la condición de liquidador en caso de incumplimiento de normas.",
+     "motivo": "El art. 14.1.c) establece que podrá serle encomendada la liquidación cuando los liquidadores incumplan las normas que para la protección de los asegurados se establecen en la Ley 20/2015.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "Según el art. 14, el Consorcio asumirá la condición de liquidador a petición de la propia entidad.",
+     "motivo": "El art. 14.1.d) indica que podrá serle encomendada la liquidación mediante aceptación de la petición de la propia entidad aseguradora, si se apreciara causa justificada.",
+     "respaldada": true
+    },
+    {
+     "afirmacion": "El art. 3 indica que le corresponde al Consorcio llevar a cabo la liquidación que le sea encomendada.",
+     "motivo": "El art. 3.4 establece que corresponderá al Consorcio llevar a cabo la liquidación de las entidades aseguradoras que le sea encomendada en los supuestos previstos en este estatuto legal y en la legislación sobre ordenación y supervisión de los seguros privados.",
+     "respaldada": true
+    }
+   ],
+   "error_juez": null
+  },
+  {
+   "id": "q35",
+   "tipo": "parafrasis",
+   "pregunta": "¿Qué papel tiene el Consorcio en el seguro obligatorio del coche?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198281, Requested 2741. Please try again in 7m21.504s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q36",
+   "tipo": "referencia",
+   "pregunta": "¿De qué trata el artículo 20 del Estatuto Legal del Consorcio?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198280, Requested 3159. Please try again in 10m21.648s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q37",
+   "tipo": "caso",
+   "pregunta": "¿Puedo demandar al Consorcio sin presentar antes una reclamación administrativa?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198280, Requested 2459. Please try again in 5m19.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q38",
+   "tipo": "parafrasis",
+   "pregunta": "¿Cubre el Consorcio los daños de un accidente en una central nuclear?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198279, Requested 3331. Please try again in 11m35.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q39",
+   "tipo": "caso",
+   "pregunta": "El siniestro ocurrió antes de pagar el primer recibo, ¿tengo cobertura?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198278, Requested 3043. Please try again in 9m30.672s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q40",
+   "tipo": "parafrasis",
+   "pregunta": "¿Cuántos días tengo para avisar a la aseguradora de un siniestro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198277, Requested 2709. Please try again in 7m5.952s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q41",
+   "tipo": "literal",
+   "pregunta": "¿En qué plazo debe pagar el asegurador el importe mínimo de la indemnización?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198276, Requested 3344. Please try again in 11m39.839999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q42",
+   "tipo": "caso",
+   "pregunta": "Llevo dos meses sin pagar un recibo del seguro de hogar y se me inunda la casa, ¿me cubren?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198275, Requested 3264. Please try again in 11m4.848s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q43",
+   "tipo": "parafrasis",
+   "pregunta": "¿Cuánto tiempo tengo para reclamar a mi seguro de hogar antes de perder el derecho?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198275, Requested 2607. Please try again in 6m21.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q44",
+   "tipo": "literal",
+   "pregunta": "¿Con cuánta antelación debe oponerse el tomador a la prórroga del contrato?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198274, Requested 2581. Please try again in 6m9.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q45",
+   "tipo": "parafrasis",
+   "pregunta": "¿Puedo ganar dinero con el seguro si me indemnizan por encima del valor de lo dañado?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198273, Requested 2135. Please try again in 2m56.256s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q46",
+   "tipo": "literal",
+   "pregunta": "¿Qué es la regla proporcional cuando la suma asegurada es inferior al valor del interés?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198271, Requested 2558. Please try again in 5m58.128s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q47",
+   "tipo": "caso",
+   "pregunta": "Tengo la misma casa asegurada en dos compañías, ¿tengo que decírselo a cada una?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198270, Requested 2947. Please try again in 8m45.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q48",
+   "tipo": "literal",
+   "pregunta": "¿Qué se considera incendio según la Ley de Contrato de Seguro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198269, Requested 2363. Please try again in 4m33.024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q49",
+   "tipo": "caso",
+   "pregunta": "Me robaron porque me dejé la puerta de casa abierta, ¿me paga el seguro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198269, Requested 2454. Please try again in 5m12.336s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q50",
+   "tipo": "parafrasis",
+   "pregunta": "Si otro conductor me causa daños, ¿puedo reclamar directamente a su aseguradora?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198267, Requested 2083. Please try again in 2m31.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q51",
+   "tipo": "literal",
+   "pregunta": "¿Cómo define la ley el accidente en el seguro de accidentes?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198267, Requested 2035. Please try again in 2m10.464s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q52",
+   "tipo": "parafrasis",
+   "pregunta": "¿Qué pasa si no conté todo lo que me preguntaron al contratar el seguro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198266, Requested 2482. Please try again in 5m23.135999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q53",
+   "tipo": "caso",
+   "pregunta": "Contraté un seguro de hogar cuando la casa ya se había quemado, ¿es válido?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198265, Requested 2276. Please try again in 3m53.712s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q54",
+   "tipo": "parafrasis",
+   "pregunta": "¿Tengo que hacer algo para que los daños no vayan a más después de un siniestro?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198265, Requested 2414. Please try again in 4m53.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q55",
+   "tipo": "referencia",
+   "pregunta": "¿Qué dice el artículo 43 de la Ley de Contrato de Seguro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198264, Requested 2049. Please try again in 2m15.216s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q56",
+   "tipo": "literal",
+   "pregunta": "¿Qué plazo tengo para enviar la relación de objetos dañados tras el siniestro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198263, Requested 2668. Please try again in 6m42.192s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q57",
+   "tipo": "referencia",
+   "pregunta": "¿Qué establece el artículo 23 de la Ley 50/1980?",
+   "con_respuesta": true,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198263, Requested 2623. Please try again in 6m22.752s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q58",
+   "tipo": "parafrasis",
+   "pregunta": "¿Tienen que estar resaltadas en la póliza las cláusulas que me quitan derechos?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198262, Requested 2561. Please try again in 5m55.536s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q59",
+   "tipo": "literal",
+   "pregunta": "¿Cuál es la duración máxima de un contrato de seguro?",
+   "con_respuesta": true,
+   "articulo_recuperado": true,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198262, Requested 2020. Please try again in 2m1.824s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q60",
+   "tipo": "sin_respuesta",
+   "pregunta": "¿Cuánto cuesta este año el recargo del Consorcio en un seguro de hogar?",
+   "con_respuesta": false,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198261, Requested 2920. Please try again in 8m30.191999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q61",
+   "tipo": "sin_respuesta",
+   "pregunta": "¿Qué teléfono tiene el Consorcio para declarar un siniestro?",
+   "con_respuesta": false,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198261, Requested 2796. Please try again in 7m36.623999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q62",
+   "tipo": "sin_respuesta",
+   "pregunta": "¿Cuánto tarda de media el Consorcio en pagar una indemnización?",
+   "con_respuesta": false,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198260, Requested 2472. Please try again in 5m16.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  },
+  {
+   "id": "q63",
+   "tipo": "sin_respuesta",
+   "pregunta": "¿Cómo se calcula la depreciación de un electrodoméstico al valorar los daños?",
+   "con_respuesta": false,
+   "articulo_recuperado": false,
+   "respondida": null,
+   "error": "No se pudo generar la respuesta (RateLimitError): Error code: 429 - Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m8bfwhjcec4thhzzp8v4fdtr` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198260, Requested 2068. Please try again in 2m21.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+   "texto": null,
+   "citas": [],
+   "avisos": [],
+   "afirmaciones": [],
+   "error_juez": null
+  }
+ ]
+}

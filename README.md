@@ -170,9 +170,31 @@ fiable con lo literal y débil con las interpretaciones forzadas, y que el probl
 principal está en el generador: **cuando la búsqueda no trae el artículo correcto, tiende a
 estirar el texto** en lugar de abstenerse.
 
-Las respuestas y los juicios se guardan en caché (`data/evaluacion/`), así que repetir la
-evaluación no consume cuota. El plan gratuito de Groq limita los tokens por minuto, por lo
-que la primera ejecución tarda unos 30 minutos.
+### Instrucciones v2: no deducir, abstenerse si no hay respuesta expresa
+
+Para atacar ese problema, la v2 de las instrucciones prohíbe deducir (que algo no esté
+excluido no significa que esté cubierto; que una palabra coincida no significa que el
+fragmento hable de lo mismo) y obliga a abstenerse si ningún fragmento responde de forma
+expresa. Son reglas generales: no se añadió nada específico de las preguntas de la
+evaluación, para no sobreajustar a ella.
+
+Primera comparación sobre las 34 preguntas evaluadas con las dos versiones (la v2 está
+incompleta porque se agotó la cuota diaria del plan gratuito):
+
+| Métrica | v1 | v2 |
+|---|---|---|
+| Afirmaciones respaldadas | 93 % | 95 % |
+| Tasa de respuesta | 85 % | 74 % |
+| Responde aunque la búsqueda no trajo el artículo | 38 % | **12 %** |
+
+La v2 deja de inventar cuando le falta el artículo (desaparece el error del granizo), a
+cambio de responder menos y de pasarse de prudente en algún caso. Es el intercambio entre
+precisión y cobertura, que en un dominio legal compensa.
+
+Las respuestas y los juicios se guardan en caché (`data/evaluacion/`), distinguiendo la
+versión de las instrucciones, así que repetir la evaluación no consume cuota. El plan
+gratuito de Groq limita los tokens por minuto (una ejecución completa tarda unos 30
+minutos) y por día (200.000 tokens, en torno a una evaluación completa).
 
 ## Uso
 
