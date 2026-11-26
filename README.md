@@ -3,6 +3,9 @@
 Asistente que responde preguntas sobre la **normativa del Consorcio de Compensación de
 Seguros** citando el artículo exacto del que sale cada respuesta.
 
+**▶ [Prueba la demo](https://consorcio-rag-5lwn38rijkdjagehf8kyd7.streamlit.app/)**
+(si lleva tiempo sin visitas, tarda un minuto en despertar).
+
 > **Pregunta:** ¿Hay plazo de carencia si sustituyo mi póliza por otra en otra compañía?
 >
 > **Respuesta:** No, siempre que no haya interrupción de la cobertura. El plazo de carencia
@@ -10,9 +13,9 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 > continuidad, salvo en la parte que sea aumento o nueva cobertura.
 > *Fuente: Reglamento del seguro de riesgos extraordinarios, art. 8.1.a.*
 
-**Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
-está entre los 5 primeros resultados en el **80 %** de las preguntas. La generación de la
-respuesta con citas ya funciona y su fidelidad está medida. La demo web está lista para publicarse en Streamlit Community Cloud.
+**Estado:** la recuperación está evaluada (el artículo correcto está entre los 5 primeros
+resultados en el **80 %** de las preguntas), la respuesta se genera con citas verificadas y
+su fidelidad está medida, y la demo está publicada. Pendiente: CI con GitHub Actions.
 
 ---
 
@@ -49,7 +52,8 @@ CONSULTA (cada pregunta)
 | Evaluación de la respuesta (fidelidad, LLM como juez) | `fidelidad.py` | ✅ |
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
 | Demo web (Streamlit, y Gradio opcional) | `demo.py`, `streamlit_app.py` | ✅ |
-| Publicación en Streamlit Community Cloud | | ⏳ |
+| Publicación en Streamlit Community Cloud | [demo](https://consorcio-rag-5lwn38rijkdjagehf8kyd7.streamlit.app/) | ✅ |
+| CI con GitHub Actions | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
 ## Decisiones de diseño
