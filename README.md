@@ -5,7 +5,7 @@
 Asistente que responde preguntas sobre la **normativa del Consorcio de Compensación de
 Seguros** citando el artículo exacto del que sale cada respuesta.
 
-**▶ [Prueba la demo](https://consorcio-rag-5lwn38rijkdjagehf8kyd7.streamlit.app/)**
+**▶ [Prueba la demo](https://consorcio-rag-7mdqdogulktgay6rkan6xf.streamlit.app/)**
 (si lleva tiempo sin visitas, tarda un minuto en despertar).
 
 > **Pregunta:** ¿Hay plazo de carencia si sustituyo mi póliza por otra en otra compañía?
@@ -55,7 +55,7 @@ CONSULTA (cada pregunta)
 | Evaluación de la respuesta (fidelidad, LLM como juez) | `fidelidad.py` | ✅ |
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
 | Demo web (Streamlit, y Gradio opcional) | `demo.py`, `streamlit_app.py` | ✅ |
-| Publicación en Streamlit Community Cloud | [demo](https://consorcio-rag-5lwn38rijkdjagehf8kyd7.streamlit.app/) | ✅ |
+| Publicación en Streamlit Community Cloud | [demo](https://consorcio-rag-7mdqdogulktgay6rkan6xf.streamlit.app/) | ✅ |
 | CI/CD con GitHub Actions (evaluación como test, despliegue si pasa) | `.github/workflows/ci.yml` | ✅ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
