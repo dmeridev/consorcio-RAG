@@ -11,8 +11,8 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 > *Fuente: Reglamento del seguro de riesgos extraordinarios, art. 8.1.a.*
 
 **Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
-está entre los 5 primeros resultados en el **80 %** de las preguntas. Faltan la generación
-de la respuesta y la demo pública.
+está entre los 5 primeros resultados en el **80 %** de las preguntas. La generación de la
+respuesta con citas ya funciona; faltan medir su fidelidad y la demo pública.
 
 ---
 
@@ -47,7 +47,7 @@ CONSULTA (cada pregunta)
 | Búsqueda híbrida (RRF y suma ponderada) | `buscar.py` | ✅ |
 | Evaluación de la recuperación (recall@k, MRR) | `evaluar.py` | ✅ |
 | Evaluación de la respuesta (fidelidad) | | ⏳ |
-| Generación de la respuesta con citas | | ⏳ |
+| Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
 | Demo pública (Hugging Face Spaces) | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
@@ -130,6 +130,26 @@ configuraciones: 2 troceados × 4 métodos × con o sin reducción a raíces.
 **Limitaciones:** las preguntas son sintéticas y no se han revisado a mano, y 59 preguntas
 son pocas (cada una vale 1,7 puntos). Solo las diferencias grandes son concluyentes.
 
+## Generación de la respuesta
+
+Los 5 fragmentos recuperados se etiquetan ([F1]…[F5]) y se pasan al LLM con instrucciones
+de responder solo con ellos. El modelo devuelve **JSON con un esquema estricto**
+(`respuesta`, `citas`, `respondida`) y **el código verifica** que cada cita es uno de los
+fragmentos recibidos: una instrucción no es una garantía.
+
+- **Proveedor intercambiable:** una sola clase para cualquier API compatible con OpenAI
+  (Groq, OpenAI, Gemini). Por defecto, el plan gratuito de Groq (`openai/gpt-oss-120b`).
+- **Degradación controlada:** si el LLM falla, se devuelven los artículos encontrados.
+- **Limitación conocida:** que una cita exista no garantiza que la afirmación esté en el
+  artículo citado (*faithfulness*). En las primeras pruebas, una respuesta citaba un
+  artículo real para afirmar algo que no dice. Medir la fidelidad es el siguiente paso.
+
+Requiere una clave en `.env`:
+
+```
+GROQ_API_KEY=...
+```
+
 ## Uso
 
 Requiere Python 3.12 y [uv](https://docs.astral.sh/uv/).
@@ -139,6 +159,7 @@ uv sync
 uv run python -m rag_consorcio.trocear       # PDF → fragmentos (data/fragmentos/)
 uv run python -m rag_consorcio.embeddings    # fragmentos → vectores (data/indices/)
 uv run python -m rag_consorcio.evaluar       # evaluación de la recuperación (~2,5 min)
+uv run python -m rag_consorcio.generar "¿Hay carencia si cambio de compañía?"
 uv run pytest                                # todos los tests
 uv run pytest -m "not modelo"                # sin los que cargan el modelo de embeddings
 ```
@@ -158,6 +179,7 @@ src/rag_consorcio/
   bm25.py                 búsqueda por palabras y tokenizador
   buscar.py               búsqueda híbrida (RRF y suma ponderada)
   evaluar.py              métricas y evaluación de todas las configuraciones
+  generar.py              respuesta del LLM con citas verificadas
 data/evaluacion/          preguntas de evaluación y resultados
 tests/
 ```
