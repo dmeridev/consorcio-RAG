@@ -7,13 +7,23 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "gradio>=6.32.0",
+    "huggingface-hub>=2.4.0",
     "numpy>=2.5.5",
+    "onnxruntime>=1.32.0",
     "openai>=3.60.0",
     "pymupdf>=2.1",
     "python-dotenv>=1.2.4",
-    "sentence-transformers>=6.3.0",
     "snowballstemmer>=3.1.1",
+    "streamlit>=1.67.0",
+    "tokenizers>=0.23.3",
+]
+
+[project.optional-dependencies]
+torch = [
+    "sentence-transformers>=6.3.0",
+]
+gradio = [
+    "gradio>=6.32.0",
 ]
 
 [build-system]

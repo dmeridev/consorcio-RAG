@@ -47,8 +47,87 @@ class ModeloEmbeddings(Protocol):
 
 
 @dataclass
+class E5Onnx:
+    """El mismo modelo E5 ejecutado con ONNX Runtime, sin PyTorch.
+
+    PyTorch ocupa casi 1 GB de memoria; ONNX Runtime, una fracción. Eso permite publicar la
+    demo en un hosting gratuito. Los pesos son los oficiales del modelo exportados a ONNX
+    (`onnx/model.onnx` en su repositorio).
+
+    Lo que sentence-transformers hacía por dentro, aquí se hace a mano:
+
+    1. **Tokenizar** (librería `tokenizers`), cortando en 512 tokens.
+    2. **Ejecutar el modelo:** devuelve un vector de 384 números **por cada token**.
+    3. **Mean pooling:** la media de los vectores de los tokens, sin contar el relleno
+       (*padding*) que se añade para que todos los textos del lote midan lo mismo. La
+       máscara de atención dice qué tokens son reales.
+    4. **Normalizar** a longitud 1.
+
+    Por defecto, los pesos en precisión completa (fp32, ~450 MB en memoria). `E5Onnx.int8()`
+    usa una versión **cuantizada a 8 bits** (~115 MB), con vectores ligeramente distintos:
+    hay que evaluarla antes de usarla.
+    """
+
+    nombre: str = MODELO_POR_DEFECTO
+    archivo_modelo: str = "onnx/model.onnx"
+    archivo_tokenizador: str = "onnx/tokenizer.json"
+    lote: int = 16
+
+    @classmethod
+    def int8(cls) -> E5Onnx:
+        """Cuantización dinámica a int8 del mismo modelo (exportada por Xenova)."""
+        return cls("Xenova/multilingual-e5-small", "onnx/model_quantized.onnx", "tokenizer.json")
+
+    @cached_property
+    def _sesion(self):
+        import onnxruntime as ort
+        from huggingface_hub import hf_hub_download
+
+        opciones = ort.SessionOptions()
+        # Sin la reserva de memoria (arena) de ONNX Runtime: algo más lento, bastante menos RAM.
+        opciones.enable_cpu_mem_arena = False
+        ruta = hf_hub_download(self.nombre, self.archivo_modelo)
+        return ort.InferenceSession(ruta, opciones, providers=["CPUExecutionProvider"])
+
+    @cached_property
+    def _tokenizador(self):
+        from huggingface_hub import hf_hub_download
+        from tokenizers import Tokenizer
+
+        ruta = hf_hub_download(self.nombre, self.archivo_tokenizador)
+        tokenizador = Tokenizer.from_file(ruta)
+        tokenizador.enable_truncation(max_length=512)
+        tokenizador.enable_padding()
+        return tokenizador
+
+    def pasajes(self, textos: list[str]) -> np.ndarray:
+        return self._codificar([f"passage: {t}" for t in textos])
+
+    def consulta(self, texto: str) -> np.ndarray:
+        return self._codificar([f"query: {texto}"])[0]
+
+    def _codificar(self, textos: list[str]) -> np.ndarray:
+        vectores = [self._lote(textos[i : i + self.lote]) for i in range(0, len(textos), self.lote)]
+        return np.concatenate(vectores).astype(np.float32)
+
+    def _lote(self, textos: list[str]) -> np.ndarray:
+        codificados = self._tokenizador.encode_batch(textos)
+        ids = np.array([c.ids for c in codificados], dtype=np.int64)
+        mascara = np.array([c.attention_mask for c in codificados], dtype=np.int64)
+        (tokens,) = self._sesion.run(
+            None,
+            {"input_ids": ids, "attention_mask": mascara, "token_type_ids": np.zeros_like(ids)},
+        )
+        # Mean pooling: suma de los vectores de los tokens reales / número de tokens reales.
+        peso = mascara[..., None].astype(np.float32)
+        medias = (tokens * peso).sum(axis=1) / np.clip(peso.sum(axis=1), 1e-9, None)
+        return medias / np.linalg.norm(medias, axis=1, keepdims=True)
+
+
+@dataclass
 class E5Local:
-    """Modelo E5 de sentence-transformers, ejecutado en local."""
+    """Modelo E5 de sentence-transformers (PyTorch). Se usó hasta pasar a ONNX; sigue
+    disponible para comparar (`uv sync --extra torch`)."""
 
     nombre: str = MODELO_POR_DEFECTO
 
@@ -105,11 +184,25 @@ def cargar_indice(
     return datos["vectores"], datos["ids"].tolist()
 
 
+def modelo_configurado() -> E5Onnx:
+    """El modelo que indica la variable de entorno `RAG_EMBEDDINGS`: `fp32` (por defecto,
+    mejor calidad) o `int8` (unos 330 MB menos de memoria, 2 puntos menos de recall@5 en la
+    búsqueda híbrida). Permite cambiarlo en el servidor sin tocar el código."""
+    import os
+
+    variante = os.getenv("RAG_EMBEDDINGS", "fp32").lower()
+    if variante == "int8":
+        return E5Onnx.int8()
+    if variante != "fp32":
+        raise ValueError(f"RAG_EMBEDDINGS debe ser fp32 o int8, no {variante!r}")
+    return E5Onnx()
+
+
 def main() -> None:
-    modelo = E5Local()
+    modelo = modelo_configurado()
     for estrategia in ("articulo", "fijo"):
         ruta = indexar(estrategia, modelo)
-        vectores, _ = cargar_indice(estrategia)
+        vectores, _ = cargar_indice(estrategia, modelo.nombre)
         print(
             f"{estrategia:9} {vectores.shape[0]} vectores de {vectores.shape[1]} números → {ruta}"
         )

@@ -35,7 +35,7 @@ from datetime import date
 from rag_consorcio.bm25 import Tokenizador
 from rag_consorcio.buscar import METODOS, Buscador
 from rag_consorcio.corpus import RAIZ
-from rag_consorcio.embeddings import E5Local
+from rag_consorcio.embeddings import ModeloEmbeddings, modelo_configurado
 
 DIR_EVALUACION = RAIZ / "data" / "evaluacion"
 K_MAX = 10
@@ -71,9 +71,9 @@ def metricas(posiciones: list[int | None]) -> dict[str, float]:
     return resultado
 
 
-def evaluar() -> dict:
+def evaluar(modelo: ModeloEmbeddings | None = None) -> dict:
     preguntas = [p for p in cargar_preguntas() if p.articulos_validos]
-    modelo = E5Local()
+    modelo = modelo or modelo_configurado()
     configuraciones = []
     for estrategia in ("articulo", "fijo"):
         for raices in (False, True):

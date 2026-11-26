@@ -1,0 +1,3 @@
+# Para Streamlit Community Cloud: instala el paquete con sus dependencias principales
+# (sin PyTorch ni Gradio, que son opcionales).
+.

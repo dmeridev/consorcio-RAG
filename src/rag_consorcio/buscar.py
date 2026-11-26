@@ -30,7 +30,12 @@ import numpy as np
 
 from rag_consorcio.bm25 import BM25, Tokenizador
 from rag_consorcio.corpus import DIR_FRAGMENTOS
-from rag_consorcio.embeddings import E5Local, ModeloEmbeddings, cargar_indice, similitud
+from rag_consorcio.embeddings import (
+    ModeloEmbeddings,
+    cargar_indice,
+    modelo_configurado,
+    similitud,
+)
 
 METODOS = ("embeddings", "bm25", "rrf", "ponderada")
 K_RRF = 60
@@ -72,7 +77,7 @@ class Buscador:
     """Busca sobre los fragmentos de una estrategia de troceado («articulo» o «fijo»)."""
 
     estrategia: str = "articulo"
-    modelo: ModeloEmbeddings = field(default_factory=E5Local)
+    modelo: ModeloEmbeddings = field(default_factory=modelo_configurado)
     tokenizador: Tokenizador = field(default_factory=Tokenizador)
     alfa: float = 0.5
 

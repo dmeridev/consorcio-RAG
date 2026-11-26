@@ -12,7 +12,7 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 
 **Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
 está entre los 5 primeros resultados en el **80 %** de las preguntas. La generación de la
-respuesta con citas ya funciona y su fidelidad está medida. La demo web funciona en local; falta publicarla.
+respuesta con citas ya funciona y su fidelidad está medida. La demo web está lista para publicarse en Streamlit Community Cloud.
 
 ---
 
@@ -48,8 +48,8 @@ CONSULTA (cada pregunta)
 | Evaluación de la recuperación (recall@k, MRR) | `evaluar.py` | ✅ |
 | Evaluación de la respuesta (fidelidad, LLM como juez) | `fidelidad.py` | ✅ |
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
-| Demo web (Gradio) | `demo.py`, `app.py` | ✅ |
-| Publicación en Hugging Face Spaces | | ⏳ |
+| Demo web (Streamlit, y Gradio opcional) | `demo.py`, `streamlit_app.py` | ✅ |
+| Publicación en Streamlit Community Cloud | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
 ## Decisiones de diseño
@@ -84,6 +84,12 @@ harían de cebo en la búsqueda.
 - El modelo solo lee 512 tokens y corta el resto sin avisar. Con el límite inicial de
   3.000 caracteres, 17 fragmentos se pasaban. Se bajó a 2.000 (máximo 466 tokens) y un
   test lo vigila.
+- **Se ejecuta con ONNX Runtime, sin PyTorch**, para que la demo quepa en un hosting
+  gratuito. El mean pooling y la normalización se hacen a mano. Los vectores son idénticos
+  a los de sentence-transformers (coseno 1,000000) y la evaluación da las mismas cifras,
+  con la memoria bajando de ~1.045 a ~813 MB. Una versión cuantizada a int8
+  (`RAG_EMBEDDINGS=int8`) baja a ~480 MB a cambio de 2 puntos de recall@5 en la búsqueda
+  híbrida.
 
 **BM25 implementado a mano.** Los embeddings captan el significado pero casi ignoran los
 datos exactos («artículo 9»); BM25 hace lo contrario. Está implementado en unas 40 líneas
@@ -199,9 +205,10 @@ minutos) y por día (200.000 tokens, en torno a una evaluación completa).
 
 ## Demo web
 
-Una interfaz con Gradio (`app.py`): la pregunta, la respuesta con sus fuentes, los
-artículos encontrados (desplegables, con el citado marcado) y un aviso de que es una demo
-educativa que no sustituye el asesoramiento profesional.
+Una interfaz en Streamlit (`streamlit_app.py`), pensada para Streamlit Community Cloud: la
+pregunta, la respuesta con sus fuentes, los artículos encontrados (desplegables, con el
+citado marcado) y un aviso de que es una demo educativa que no sustituye el asesoramiento
+profesional. Hay también una versión en Gradio (`app.py`, opcional).
 
 Está pensada para funcionar con una cuota gratuita limitada (unas 80-100 respuestas al día):
 
@@ -212,8 +219,12 @@ Está pensada para funcionar con una cuota gratuita limitada (unas 80-100 respue
   segundos.
 
 ```bash
-uv run python app.py       # http://localhost:7860
+uv run streamlit run streamlit_app.py      # http://localhost:8501
+uv sync --extra gradio && uv run python app.py   # versión Gradio, http://localhost:7860
 ```
+
+En Streamlit Community Cloud la clave va en los *secrets* de la app (`GROQ_API_KEY`), y
+`RAG_EMBEDDINGS = "int8"` reduce la memoria si hiciera falta.
 
 ## Uso
 
@@ -230,7 +241,8 @@ uv run pytest                                # todos los tests
 uv run pytest -m "not modelo"                # sin los que cargan el modelo de embeddings
 ```
 
-La primera ejecución de `embeddings` descarga el modelo (unos 470 MB).
+La primera ejecución de `embeddings` descarga el modelo ONNX (unos 450 MB). Para comparar con
+PyTorch: `uv sync --extra torch`.
 
 ## Estructura
 
@@ -247,8 +259,10 @@ src/rag_consorcio/
   evaluar.py              métricas y evaluación de todas las configuraciones
   generar.py              respuesta del LLM con citas verificadas
   fidelidad.py            evaluación de la respuesta con un LLM como juez
-  demo.py                 demo web con Gradio
-app.py                    punto de entrada de la demo
+  demo.py                 lógica de la demo (caché, ejemplos, degradación)
+streamlit_app.py          demo en Streamlit
+app.py                    demo en Gradio (opcional)
+requirements.txt          dependencias para Streamlit Community Cloud
 data/evaluacion/          preguntas de evaluación y resultados
 data/demo/                respuestas precalculadas de los ejemplos
 tests/

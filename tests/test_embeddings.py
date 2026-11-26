@@ -20,21 +20,33 @@ def test_similitud_es_el_producto_escalar_de_vectores_normalizados():
 @pytest.mark.modelo
 def test_ningun_fragmento_supera_los_512_tokens_del_modelo():
     """Si un fragmento pasa de 512 tokens, el modelo corta el final sin avisar."""
-    from transformers import AutoTokenizer
+    from huggingface_hub import hf_hub_download
+    from tokenizers import Tokenizer
 
-    tokenizador = AutoTokenizer.from_pretrained(MODELO_POR_DEFECTO)
+    # Sin truncar, para ver la longitud real.
+    tokenizador = Tokenizer.from_file(hf_hub_download(MODELO_POR_DEFECTO, "onnx/tokenizer.json"))
     for documento in CORPUS:
         for fragmento in por_articulo(extraer(documento)):
-            tokens = len(tokenizador(f"passage: {fragmento.texto}")["input_ids"])
+            tokens = len(tokenizador.encode(f"passage: {fragmento.texto}").ids)
             assert tokens <= 512, f"{fragmento.id}: {tokens} tokens"
+
+
+@pytest.mark.modelo
+def test_onnx_da_los_mismos_vectores_que_pytorch():
+    """La sustitución de PyTorch por ONNX Runtime no cambia los vectores."""
+    pytest.importorskip("sentence_transformers")
+    from rag_consorcio.embeddings import E5Local, E5Onnx
+
+    textos = ["¿Hay carencia si cambio de compañía?", "Artículo 9. Franquicia"]
+    np.testing.assert_allclose(E5Onnx().pasajes(textos), E5Local().pasajes(textos), atol=1e-4)
 
 
 @pytest.mark.modelo
 def test_busqueda_por_significado_encuentra_el_plazo_de_carencia():
     """La pregunta no contiene ninguna palabra del artículo y aun así lo encuentra."""
-    from rag_consorcio.embeddings import E5Local
+    from rag_consorcio.embeddings import E5Onnx
 
-    modelo = E5Local()
+    modelo = E5Onnx()
     fragmentos = por_articulo(extraer(next(d for d in CORPUS if d.id == "reglamento")))
     vectores = modelo.pasajes([f.texto for f in fragmentos])
     puntuaciones = similitud(modelo.consulta("¿Hay carencia si cambio de compañía?"), vectores)

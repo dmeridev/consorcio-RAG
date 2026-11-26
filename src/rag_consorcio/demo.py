@@ -58,8 +58,9 @@ def preparar_indices() -> None:
 
     if not (DIR_FRAGMENTOS / "articulo.jsonl").exists():
         trocear.guardar(trocear.generar())
-    if not ruta_indice("articulo").exists():
-        embeddings.indexar("articulo", embeddings.E5Local())
+    modelo = embeddings.modelo_configurado()
+    if not ruta_indice("articulo", modelo.nombre).exists():
+        embeddings.indexar("articulo", modelo)
 
 
 def clave(pregunta: str) -> str:
