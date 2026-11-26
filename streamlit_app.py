@@ -55,6 +55,19 @@ st.markdown(
     "**Reglamento del seguro de riesgos extraordinarios** y la **Ley de Contrato de Seguro** "
     "(textos consolidados del BOE), y cita el artículo."
 )
+boton_repo, boton_perfil, _ = st.columns([1, 1, 1])
+boton_repo.link_button(
+    "Ver el código en GitHub",
+    "https://github.com/dmeridev/consorcio-RAG",
+    icon=":material/code:",
+    use_container_width=True,
+)
+boton_perfil.link_button(
+    "Mi perfil de GitHub",
+    "https://github.com/dmeridev",
+    icon=":material/person:",
+    use_container_width=True,
+)
 st.warning(AVISO_LEGAL.replace("⚠️ ", ""), icon="⚠️")
 
 if "pregunta" not in st.session_state:
