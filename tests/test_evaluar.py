@@ -37,3 +37,16 @@ def test_ids_de_preguntas_unicos_y_tipos_conocidos():
     tipos = {"parafrasis", "literal", "caso", "referencia", "sin_respuesta"}
     assert {p.tipo for p in preguntas} <= tipos
     assert all(not p.articulos_validos for p in preguntas if p.tipo == "sin_respuesta")
+
+
+def test_comprobar_umbral_usa_la_configuracion_principal():
+    from rag_consorcio.evaluar import comprobar_umbral
+
+    informe = {
+        "resultados": [
+            {"estrategia": "articulo", "metodo": "rrf", "raices": True, "recall@5": 0.80},
+            {"estrategia": "fijo", "metodo": "bm25", "raices": False, "recall@5": 0.10},
+        ]
+    }
+    assert comprobar_umbral(informe, 0.78) == (True, 0.80)
+    assert comprobar_umbral(informe, 0.85) == (False, 0.80)

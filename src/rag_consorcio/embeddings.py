@@ -204,7 +204,7 @@ def main() -> None:
         ruta = indexar(estrategia, modelo)
         vectores, _ = cargar_indice(estrategia, modelo.nombre)
         print(
-            f"{estrategia:9} {vectores.shape[0]} vectores de {vectores.shape[1]} números → {ruta}"
+            f"{estrategia:9} {vectores.shape[0]} vectores de {vectores.shape[1]} números en {ruta}"
         )
 
 

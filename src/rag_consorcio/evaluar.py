@@ -131,12 +131,45 @@ def imprimir(informe: dict) -> None:
         print(f"{_etiqueta(f):28} " + " ".join(f"{f['recall@5_por_tipo'][t]:11.0%}" for t in tipos))
 
 
+# La configuración que usa el asistente (la ganadora de la evaluación).
+CONFIGURACION_PRINCIPAL = {"estrategia": "articulo", "metodo": "rrf", "raices": True}
+
+
+def comprobar_umbral(informe: dict, umbral: float) -> tuple[bool, float]:
+    """¿La configuración principal alcanza el recall@5 mínimo? Es la «evaluación como test»
+    del CI: si un cambio empeora la búsqueda por debajo del umbral, el CI falla."""
+    fila = next(
+        f
+        for f in informe["resultados"]
+        if all(f[k] == v for k, v in CONFIGURACION_PRINCIPAL.items())
+    )
+    return fila["recall@5"] >= umbral, fila["recall@5"]
+
+
 def main() -> None:
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description="Evaluación de la recuperación.")
+    parser.add_argument(
+        "--umbral",
+        type=float,
+        help="recall@5 mínimo de la configuración principal; si no se alcanza, sale con error",
+    )
+    args = parser.parse_args()
+
     informe = evaluar()
     ruta = DIR_EVALUACION / "resultados.json"
     ruta.write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
     imprimir(informe)
     print(f"\nDetalle por pregunta en {ruta}")
+
+    if args.umbral is not None:
+        ok, valor = comprobar_umbral(informe, args.umbral)
+        resultado = "✅ supera" if ok else "❌ NO alcanza"
+        print(f"\n{resultado} el umbral: recall@5 = {valor:.1%} (mínimo {args.umbral:.0%})")
+        if not ok:
+            sys.exit(1)
 
 
 if __name__ == "__main__":
