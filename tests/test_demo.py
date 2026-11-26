@@ -104,3 +104,25 @@ def test_ejemplos_solo_se_cargan_si_coincide_la_version(tmp_path):
     ruta.write_text(json.dumps(datos), encoding="utf-8")
     demo.cargar_ejemplos(ruta)
     assert demo._cache["p"] == ("R", "F")
+
+
+def test_sin_clave_la_demo_arranca_y_muestra_los_articulos(monkeypatch):
+    """Sin GROQ_API_KEY no debe caerse: degrada a «solo artículos»."""
+    from rag_consorcio import generar
+    from rag_consorcio.demo import LLMNoDisponible, _cliente_demo
+
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    monkeypatch.setattr("dotenv.load_dotenv", lambda *a, **k: False)
+    cliente = _cliente_demo()
+    assert isinstance(cliente, LLMNoDisponible)
+
+    class BuscadorFalso:
+        def buscar(self, pregunta, metodo, k):
+            return [_fragmento(8)]
+
+    asistente = generar.Asistente(buscador=BuscadorFalso(), cliente=cliente)
+    demo = Demo(asistente)
+    demo._cache.clear()
+    respuesta, fragmentos = demo.responder("¿Hay carencia?")
+    assert "no se puede redactar" in respuesta
+    assert "Reglamento, art. 8" in fragmentos

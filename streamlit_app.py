@@ -7,6 +7,8 @@ aquí solo está la interfaz. En Streamlit Community Cloud, la clave se guarda e
 Uso local: `uv run streamlit run streamlit_app.py`
 """
 
+import os
+
 import streamlit as st
 
 from rag_consorcio.demo import (
@@ -18,6 +20,21 @@ from rag_consorcio.demo import (
 )
 
 st.set_page_config(page_title="Consorcio RAG", page_icon="⚖️", layout="centered")
+
+
+def cargar_secretos() -> None:
+    """Pasa los secrets de Streamlit a variables de entorno, que es donde los lee el resto
+    del proyecto. En local no hay secrets (se usa `.env`) y `st.secrets` lanza un error."""
+    try:
+        secretos = dict(st.secrets)
+    except Exception:  # noqa: BLE001 — sin fichero de secrets
+        return
+    for nombre in ("GROQ_API_KEY", "RAG_EMBEDDINGS"):
+        if nombre in secretos and not os.getenv(nombre):
+            os.environ[nombre] = str(secretos[nombre])
+
+
+cargar_secretos()
 
 
 @st.cache_resource(show_spinner="Preparando el buscador (solo la primera vez)…")

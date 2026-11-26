@@ -96,11 +96,28 @@ def formatear_fragmentos(r: Respuesta) -> str:
     return "\n\n".join(bloques)
 
 
+class LLMNoDisponible:
+    """Sustituye al LLM cuando no se puede crear (por ejemplo, falta la clave). Cada
+    llamada falla, y `Asistente.responder` lo convierte en «solo artículos»: la demo
+    arranca y busca igualmente, en lugar de caerse entera."""
+
+    def __init__(self, motivo: str) -> None:
+        self.motivo = motivo
+
+    def completar(self, sistema: str, usuario: str, esquema: dict) -> tuple[str, dict]:
+        raise RuntimeError(self.motivo)
+
+
+def _cliente_demo():
+    try:
+        return ClienteOpenAICompatible(GROQ_DEMO, reintentos=1, timeout=30)
+    except RuntimeError as exc:  # sin clave: degradación controlada desde el arranque
+        return LLMNoDisponible(str(exc))
+
+
 class Demo:
     def __init__(self, asistente: Asistente | None = None) -> None:
-        self.asistente = asistente or Asistente(
-            cliente=ClienteOpenAICompatible(GROQ_DEMO, reintentos=1, timeout=30)
-        )
+        self.asistente = asistente or Asistente(cliente=_cliente_demo())
         self._cache: dict[str, tuple[str, str]] = {}
         self._cerrojo = threading.Lock()
         self.cargar_ejemplos()
