@@ -126,3 +126,25 @@ def test_sin_clave_la_demo_arranca_y_muestra_los_articulos(monkeypatch):
     respuesta, fragmentos = demo.responder("¿Hay carencia?")
     assert "no se puede redactar" in respuesta
     assert "Reglamento, art. 8" in fragmentos
+
+
+def test_si_la_clave_llega_despues_se_recupera(monkeypatch):
+    from rag_consorcio import demo as modulo
+    from rag_consorcio.demo import LLMNoDisponible
+
+    asistente = AsistenteFalso(_respuesta())
+    asistente.cliente = LLMNoDisponible("Falta la clave GROQ_API_KEY")
+    nuevo = object()
+    monkeypatch.setattr(modulo, "_cliente_demo", lambda: nuevo)
+    demo = Demo(asistente)
+    demo._cache.clear()
+    demo.responder("¿Hay carencia?")
+    assert asistente.cliente is nuevo
+
+
+def test_motivo_del_error_sin_mostrar_el_mensaje_original():
+    from rag_consorcio.demo import motivo_error
+
+    assert "clave" in motivo_error("RuntimeError: Falta la clave GROQ_API_KEY en el entorno")
+    assert "cuota" in motivo_error("RateLimitError: Error code: 429 - org_123 ...")
+    assert "org_123" not in motivo_error("RateLimitError: Error code: 429 - org_123 ...")

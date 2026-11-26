@@ -70,9 +70,8 @@ def clave(pregunta: str) -> str:
 def formatear_respuesta(r: Respuesta) -> str:
     if r.error:
         return (
-            "⚠️ **Ahora mismo no se puede redactar la respuesta** (puede que se haya agotado "
-            "la cuota gratuita del modelo de lenguaje). Abajo tienes los artículos más "
-            "relevantes que ha encontrado la búsqueda."
+            f"⚠️ **Ahora mismo no se puede redactar la respuesta** ({motivo_error(r.error)}). "
+            "Abajo tienes los artículos más relevantes que ha encontrado la búsqueda."
         )
     if not r.respondida:
         return f"🤷 **La normativa disponible no lo responde de forma expresa.**\n\n{r.texto}"
@@ -81,6 +80,20 @@ def formatear_respuesta(r: Respuesta) -> str:
     if r.avisos:
         partes += ["", *[f"⚠️ {a}" for a in r.avisos]]
     return "\n".join(partes)
+
+
+def motivo_error(error: str) -> str:
+    """Una explicación breve del fallo, sin mostrar el mensaje original (podría contener
+    datos de la cuenta). Desde fuera no se ven los registros, así que ayuda a diagnosticar."""
+    if "Falta la clave" in error:
+        return "la demo no tiene configurada la clave del modelo de lenguaje"
+    if "RateLimit" in error or "429" in error:
+        return "se ha agotado por ahora la cuota gratuita del modelo de lenguaje"
+    if "Authentication" in error or "401" in error:
+        return "la clave del modelo de lenguaje no es válida"
+    if "Timeout" in error or "Connection" in error:
+        return "el modelo de lenguaje no responde"
+    return "error del modelo de lenguaje"
 
 
 def formatear_fragmentos(r: Respuesta) -> str:
@@ -144,6 +157,9 @@ class Demo:
         with self._cerrojo:
             if k in self._cache:
                 return self._cache[k]
+        if isinstance(getattr(self.asistente, "cliente", None), LLMNoDisponible):
+            # La clave pudo configurarse después de arrancar: se vuelve a intentar.
+            self.asistente.cliente = _cliente_demo()
         r = self.asistente.responder(pregunta)
         salida = (formatear_respuesta(r), formatear_fragmentos(r))
         if not r.error:  # los fallos no se guardan: se reintenta en la próxima pregunta
