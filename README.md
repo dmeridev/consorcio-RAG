@@ -1,5 +1,7 @@
 # consorcio-RAG
 
+[![CI](https://github.com/dmeridev/consorcio-RAG/actions/workflows/ci.yml/badge.svg)](https://github.com/dmeridev/consorcio-RAG/actions/workflows/ci.yml)
+
 Asistente que responde preguntas sobre la **normativa del Consorcio de Compensación de
 Seguros** citando el artículo exacto del que sale cada respuesta.
 
@@ -15,7 +17,8 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 
 **Estado:** la recuperación está evaluada (el artículo correcto está entre los 5 primeros
 resultados en el **80 %** de las preguntas), la respuesta se genera con citas verificadas y
-su fidelidad está medida, y la demo está publicada. Pendiente: CI con GitHub Actions.
+su fidelidad está medida, la demo está publicada y cada cambio pasa por CI con la
+evaluación como test.
 
 ---
 
@@ -53,7 +56,7 @@ CONSULTA (cada pregunta)
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
 | Demo web (Streamlit, y Gradio opcional) | `demo.py`, `streamlit_app.py` | ✅ |
 | Publicación en Streamlit Community Cloud | [demo](https://consorcio-rag-5lwn38rijkdjagehf8kyd7.streamlit.app/) | ✅ |
-| CI con GitHub Actions | | ⏳ |
+| CI/CD con GitHub Actions (evaluación como test, despliegue si pasa) | `.github/workflows/ci.yml` | ✅ |
 | CI/CD (GitHub Actions) | | ⏳ |
 
 ## Decisiones de diseño
@@ -270,7 +273,27 @@ requirements.txt          dependencias para Streamlit Community Cloud
 data/evaluacion/          preguntas de evaluación y resultados
 data/demo/                respuestas precalculadas de los ejemplos
 tests/
+.github/workflows/ci.yml  CI/CD
 ```
+
+## CI/CD
+
+GitHub Actions (`.github/workflows/ci.yml`) comprueba cada cambio con tres trabajos en
+paralelo:
+
+1. **Estilo:** `ruff check` y `ruff format --check`.
+2. **Tests rápidos:** los que no necesitan el modelo de embeddings.
+3. **Tests con el modelo y evaluación de la búsqueda.** La evaluación funciona como un
+   test: **si el recall@5 de la configuración principal baja del 78 %** (hoy, 79,7 %), el
+   CI falla igual que si se rompiera una función. El modelo se guarda en caché entre
+   ejecuciones.
+
+Si los tres pasan en `main`, el trabajo **Publicar la demo** copia `main` a la rama
+`deploy`, que es la que despliega Streamlit Community Cloud. **La demo solo recibe código
+que ha pasado los tests y la evaluación.**
+
+La evaluación de fidelidad no está en el CI: necesita la API del LLM, gasta cuota y tarda
+unos 30 minutos. Se ejecuta a mano.
 
 ## Cómo se ha construido
 
