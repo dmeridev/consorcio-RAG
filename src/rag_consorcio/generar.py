@@ -33,6 +33,7 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
+from rag_consorcio.bm25 import Tokenizador
 from rag_consorcio.buscar import Buscador, Resultado
 from rag_consorcio.corpus import RAIZ
 
@@ -75,6 +76,8 @@ class Proveedor:
 
 
 GROQ = Proveedor("groq", "https://api.groq.com/openai/v1", "openai/gpt-oss-120b", "GROQ_API_KEY")
+# Un modelo distinto para juzgar: un juez del mismo modelo comparte sus puntos ciegos.
+GROQ_JUEZ = Proveedor("groq", "https://api.groq.com/openai/v1", "qwen/qwen3.8-27b", "GROQ_API_KEY")
 OPENAI = Proveedor("openai", "https://api.openai.com/v1", "gpt-5.6-luna", "OPENAI_API_KEY")
 
 
@@ -88,6 +91,13 @@ class ClienteLLM(Protocol):
 class ClienteOpenAICompatible:
     proveedor: Proveedor = GROQ
     timeout: float = 60.0
+    # Poca creatividad: queremos fidelidad a los fragmentos.
+    temperatura: float = 0.1
+    # Ante un 429 (límite por minuto), el SDK espera lo que indica el servidor y reintenta.
+    # En la demo bastan 2; en las evaluaciones por lotes hacen falta más.
+    reintentos: int = 2
+    # Tope de tokens de salida; None = el del proveedor.
+    max_tokens: int | None = None
 
     def __post_init__(self) -> None:
         from dotenv import load_dotenv
@@ -100,7 +110,10 @@ class ClienteOpenAICompatible:
                 f"Falta la clave {self.proveedor.variable_clave} en el entorno o en .env"
             )
         self._cliente = OpenAI(
-            base_url=self.proveedor.url, api_key=clave, timeout=self.timeout, max_retries=2
+            base_url=self.proveedor.url,
+            api_key=clave,
+            timeout=self.timeout,
+            max_retries=self.reintentos,
         )
 
     def completar(self, sistema: str, usuario: str, esquema: dict) -> tuple[str, dict]:
@@ -111,7 +124,8 @@ class ClienteOpenAICompatible:
                 "type": "json_schema",
                 "json_schema": {"name": "respuesta_rag", "strict": True, "schema": esquema},
             },
-            temperature=0.1,  # poca creatividad: queremos fidelidad a los fragmentos
+            temperature=self.temperatura,
+            **({"max_tokens": self.max_tokens} if self.max_tokens else {}),
         )
         uso = respuesta.usage
         return respuesta.choices[0].message.content or "", {
@@ -171,7 +185,10 @@ def verificar(
 
 @dataclass
 class Asistente:
-    buscador: Buscador = field(default_factory=Buscador)
+    # La configuración ganadora de la evaluación: troceado por artículo + RRF + raíces.
+    buscador: Buscador = field(
+        default_factory=lambda: Buscador(tokenizador=Tokenizador(raices=True))
+    )
     cliente: ClienteLLM | None = None
     metodo: str = "rrf"
     k: int = 5

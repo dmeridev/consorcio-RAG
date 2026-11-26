@@ -12,7 +12,7 @@ Seguros** citando el artículo exacto del que sale cada respuesta.
 
 **Estado:** en desarrollo. La recuperación está terminada y evaluada: el artículo correcto
 está entre los 5 primeros resultados en el **80 %** de las preguntas. La generación de la
-respuesta con citas ya funciona; faltan medir su fidelidad y la demo pública.
+respuesta con citas ya funciona y su fidelidad está medida; falta la demo pública.
 
 ---
 
@@ -46,7 +46,7 @@ CONSULTA (cada pregunta)
 | Búsqueda por palabras (BM25) | `bm25.py` | ✅ |
 | Búsqueda híbrida (RRF y suma ponderada) | `buscar.py` | ✅ |
 | Evaluación de la recuperación (recall@k, MRR) | `evaluar.py` | ✅ |
-| Evaluación de la respuesta (fidelidad) | | ⏳ |
+| Evaluación de la respuesta (fidelidad, LLM como juez) | `fidelidad.py` | ✅ |
 | Generación de la respuesta con citas verificadas | `generar.py` | ✅ |
 | Demo pública (Hugging Face Spaces) | | ⏳ |
 | CI/CD (GitHub Actions) | | ⏳ |
@@ -141,14 +141,38 @@ fragmentos recibidos: una instrucción no es una garantía.
   (Groq, OpenAI, Gemini). Por defecto, el plan gratuito de Groq (`openai/gpt-oss-120b`).
 - **Degradación controlada:** si el LLM falla, se devuelven los artículos encontrados.
 - **Limitación conocida:** que una cita exista no garantiza que la afirmación esté en el
-  artículo citado (*faithfulness*). En las primeras pruebas, una respuesta citaba un
-  artículo real para afirmar algo que no dice. Medir la fidelidad es el siguiente paso.
+  artículo citado (*faithfulness*). Por eso se mide aparte.
 
 Requiere una clave en `.env`:
 
 ```
 GROQ_API_KEY=...
 ```
+
+## Evaluación de la respuesta (fidelidad)
+
+Un **LLM como juez**, distinto del generador para evitar el sesgo de autopreferencia
+(`qwen/qwen3.8-27b` juzga a `gpt-oss-120b`), parte cada respuesta en afirmaciones y
+comprueba cada una **solo contra los fragmentos citados**, como hace RAGAS.
+
+| Métrica | Resultado |
+|---|---|
+| Afirmaciones respaldadas | 89 % |
+| Respuestas totalmente fieles | 73 % |
+| Tasa de respuesta (preguntas con respuesta) | 86 % |
+| Abstención correcta (preguntas sin respuesta) | 3 de 4 |
+
+**Las cifras son orientativas.** El juez se calibró con dos casos de verdad conocida y
+falló en uno: aceptó como fiel una respuesta que deducía que el granizo está cubierto
+porque el art. 4 del Reglamento menciona «eventos de la naturaleza», que ahí es un ramo de
+seguro y no un fenómeno cubierto. La revisión manual de los errores muestra que el juez es
+fiable con lo literal y débil con las interpretaciones forzadas, y que el problema
+principal está en el generador: **cuando la búsqueda no trae el artículo correcto, tiende a
+estirar el texto** en lugar de abstenerse.
+
+Las respuestas y los juicios se guardan en caché (`data/evaluacion/`), así que repetir la
+evaluación no consume cuota. El plan gratuito de Groq limita los tokens por minuto, por lo
+que la primera ejecución tarda unos 30 minutos.
 
 ## Uso
 
@@ -160,6 +184,7 @@ uv run python -m rag_consorcio.trocear       # PDF → fragmentos (data/fragment
 uv run python -m rag_consorcio.embeddings    # fragmentos → vectores (data/indices/)
 uv run python -m rag_consorcio.evaluar       # evaluación de la recuperación (~2,5 min)
 uv run python -m rag_consorcio.generar "¿Hay carencia si cambio de compañía?"
+uv run python -m rag_consorcio.fidelidad     # fidelidad con un LLM como juez (~30 min la 1.ª vez)
 uv run pytest                                # todos los tests
 uv run pytest -m "not modelo"                # sin los que cargan el modelo de embeddings
 ```
@@ -180,6 +205,7 @@ src/rag_consorcio/
   buscar.py               búsqueda híbrida (RRF y suma ponderada)
   evaluar.py              métricas y evaluación de todas las configuraciones
   generar.py              respuesta del LLM con citas verificadas
+  fidelidad.py            evaluación de la respuesta con un LLM como juez
 data/evaluacion/          preguntas de evaluación y resultados
 tests/
 ```
